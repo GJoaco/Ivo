@@ -51,8 +51,6 @@ namespace KioscoWF
 
         private void ModificarProductos_Load(object sender, EventArgs e)
         {
-
-
             productos = conexion.ObtenerDataTable("exec ProductosSeleccionar");
         }
 
@@ -82,6 +80,8 @@ namespace KioscoWF
 
                 producto.Categoria.IdCategoria = ddlCategoria.SelectedValue.ToString() == string.Empty ? 0 : Convert.ToInt32(ddlCategoria.SelectedValue);
                 producto.IdEstado = ddlEstado.SelectedValue.ToString() == string.Empty ? 0 : Convert.ToInt32(ddlEstado.SelectedValue);
+                Int32.TryParse(txtStock.Text, out int stock);
+                producto.Stock = stock;
 
                 foreach (DataRow row in productos.Rows)
                 {
@@ -103,9 +103,10 @@ namespace KioscoWF
                     string pCategoria = GenerarParametros("IdCategoria", producto.Categoria.IdCategoria.ToString(), "int"); //Aca va IdProducto
                     string pDetalle = GenerarParametros("Detalle", producto.Detalle, "string"); //Aca va IdProducto
                     string pCodigo = GenerarParametros("Codigo", producto.Codigo, "string"); //Aca va IdProducto
+                    string pStock = GenerarParametros("Stock", producto.Stock.ToString(), "int"); //Aca va IdProducto
                     string pEstado = GenerarParametros("IdEstado", producto.IdEstado.ToString(), "int"); //Aca va IdProducto
 
-                    string sql = "exec ProductosModificar " + pIdProducto + ',' + pProducto + ',' + pPrecio + ',' + pCategoria + ',' + pDetalle + ',' + pCodigo + ',' + pEstado;
+                    string sql = "exec ProductosModificar " + pIdProducto + ',' + pProducto + ',' + pPrecio + ',' + pCategoria + ',' + pDetalle + ',' + pCodigo + ',' + pEstado + ',' + pStock;
 
                     conexion.EjecutarQuery(sql);
                     Program.kiosco.ddlCategoriaProductosListar.SelectedValue = 0;

@@ -17,20 +17,18 @@ namespace KioscoWF
 {
     public partial class Kiosco : Form
     {
-        Conexion conexion;
-        public DataTable productos;
-        public DataTable productosGrilla;
-        public DataTable categorias;
-        public DataTable categoriasGrilla;
-        public DataTable estados;
-        public DataTable inicio;
-        public DataTable ventas;
-        public List<Ventas> ventasViejas;
-        public List<Ventas> ventasModificadas;
-        public decimal total = 0;
-        public List<Productos> productosVendidos = new List<Productos>();
-        DateTime fechaExportarFiltro;
-        DateTime fechaHastaExportarFiltro;
+        private Conexion conexion;
+        private DataTable productos;
+        private DataTable productosGrilla;
+        private DataTable categorias;
+        private DataTable categoriasGrilla;
+        private DataTable estados;
+        private DataTable ventas;
+        private List<Ventas> ventasViejas;
+        private List<Ventas> ventasModificadas;
+        private DateTime fechaExportarFiltro;
+        private DateTime fechaHastaExportarFiltro;
+        private Productos productoSeleccionado;
 
         public AutoCompleteSource AutoCompleteSource { get; set; }
         public AutoCompleteMode AutoCompleteMode { get; set; }
@@ -42,10 +40,12 @@ namespace KioscoWF
             //IniciarControles();
         }
 
+
+
+        //INICIO DEL PROGRAMA
         private void IniciarControles()
         {
             conexion = new Conexion();
-            inicio = new DataTable();
             ventas = new DataTable();
             ventasModificadas = new List<Ventas>();
 
@@ -61,13 +61,6 @@ namespace KioscoWF
             ddlEstadoProductosAgregar.DataSource = estados;
             ddlEstadoProductosAgregar.DisplayMember = "Estado";
             ddlEstadoProductosAgregar.ValueMember = "IdEstado";
-
-            inicio.Columns.Add("#");
-            inicio.Columns.Add("Nombre");
-            inicio.Columns.Add("Categoria");
-            inicio.Columns.Add("Precio");
-            inicio.Columns.Add("Cantidad");
-            inicio.Columns.Add("Borrar");
 
             ventas.Columns.Add("Nombre");
             ventas.Columns.Add("Cantidad");
@@ -118,15 +111,142 @@ namespace KioscoWF
         }
 
 
-        private void btnAceptarInicio_Click(object sender, EventArgs e)
+
+        //PAGINA INICIO
+        private void PresionarTeclaPaginas(object sender, KeyEventArgs e)
         {
-            InsertarVentas();
+            if (Paginas.SelectedTab.Text == "Inicio")
+            {
+                if (e.KeyValue == (char)Keys.Enter)
+                {
+                    bool cargarProducto = false;
+
+                    if (txtCodigoInicio.Text != string.Empty)
+                    {
+                        foreach (DataRow row in productos.Rows)
+                        {
+                            if (row["Codigo"].ToString() == txtCodigoInicio.Text)
+                            {
+                                Productos p = ObtenerProducto("Codigo", row["Codigo"].ToString());
+                                CargarProducto(p);
+                                txtStockMostrar.Focus();
+
+                                cargarProducto = true;
+                                break;
+                            }
+                        }
+                        if (!cargarProducto)
+                        {
+                            VaciarTextBox();
+                            MessageBox.Show("Error al cargar producto.");
+                        }
+                    }
+                }
+                else if(e.KeyValue == (char)Keys.Up)
+                {
+                    if (!ddlProductoInicio.Focused)
+                    {
+                        Int32.TryParse(txtStockMostrar.Text, out int stock);
+                        txtStockMostrar.Text = (stock + 1).ToString();
+                        //ModificarStock(stock);
+                    }
+                }
+                else if(e.KeyValue == (char)Keys.Down)
+                {
+                    if (!ddlProductoInicio.Focused)
+                    {
+                        Int32.TryParse(txtStockMostrar.Text, out int stock);
+                        txtStockMostrar.Text = (stock - 1).ToString();
+                        //ModificarStock(stock);
+                    }
+                }
+            }
         }
-        private void btnCancelarInicio_Click(object sender, EventArgs e)
+        private void SeleccionarProductoInicio(object sender, EventArgs e)
         {
-            VaciarVentas();
+            foreach (DataRow row in productos.Rows)
+            {
+                if (row["Producto"].ToString() == ddlProductoInicio.SelectedText)
+                {
+                    Productos p = ObtenerProducto("Producto", row["Producto"].ToString());
+                    CargarProducto(p);
+                    txtStockMostrar.Focus();
+                    break;
+                }
+            }
+        }
+        private Productos ObtenerProducto(string rowNombre, string dato)
+        {
+            Productos p = new Productos();
+
+            foreach (DataRow row in productos.Rows)
+            {
+                if (row[rowNombre].ToString() == dato)
+                {
+                    p.IdProducto = Convert.ToInt32(row["IdProducto"]);
+                    p.Codigo = row["Codigo"].ToString();
+                    p.Producto = row["Producto"].ToString();
+                    p.Precio = Convert.ToDecimal(row["Precio"]);
+                    p.Categoria.IdCategoria = Convert.ToInt32(row["IdCategoria"]);
+                    p.Detalle = row["Detalle"].ToString();
+                    p.IdEstado = Convert.ToInt32(row["IdEstado"]);
+
+                    foreach (DataRow row2 in categorias.Rows)
+                    {
+                        if (row2["IdCategoria"].ToString() == p.Categoria.IdCategoria.ToString())
+                        {
+                            p.Categoria.Categoria = row2["Categoria"].ToString();
+                        }
+                    }
+
+                    break;
+                }
+            }
+            return p;
+        }
+        private void CargarProducto(Productos p)
+        {
+            txtCodigoMostrar.Text = p.Codigo;
+            txtProductoMostrar.Text = p.Producto;
+
+            try
+            {
+                txtPrecioMostrar.Text = p.Precio.ToString();
+                txtStockMostrar.Text = p.Stock.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("El precio o el stock del producto se encuentra en un formato invalido");
+            }
+
+            VaciarTextBox();
+            productoSeleccionado = p;
+        }
+        private void VaciarTextBox()
+        {
+            txtCodigoInicio.Text = "";
+            ddlProductoInicio.Text = "";
+        }
+        private void txtStockMostrar_TextChanged(object sender, EventArgs e)
+        {
+            Int32.TryParse(txtStockMostrar.Text, out int stock);
+            ModificarStock(stock);
+        }
+        private void ModificarStock(int stock)
+        {
+            string pIdProducto = GenerarParametros("IdProducto", productoSeleccionado.IdProducto.ToString(), "int"); //Aca va IdProducto
+            string pStock = GenerarParametros("Stock", stock.ToString(), "int"); //Aca va IdProducto
+
+            string sql = "exec ProductosModificarStock " + pIdProducto + ',' + pStock;
+
+            conexion.EjecutarQuery(sql);
+            Program.kiosco.ddlCategoriaProductosListar.SelectedValue = 0;
+            Program.kiosco.IniciarControlesProductos();
         }
 
+
+
+        //PAGINA PRODUCTOS
         private void ClickBuscarProductosListar(object sender, EventArgs e)
         {
             string producto = GenerarParametros("Producto", txtProductoProductosListar.Text, "string");
@@ -147,25 +267,34 @@ namespace KioscoWF
             GrillaProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GrillaProductos.DataSource = productosGrilla;
         }
-        private void ClickBuscarCategoriasListar(object sender, EventArgs e)
+        private void AccionGrillaProductos(object sender, DataGridViewCellEventArgs e)
         {
-            string categoria = GenerarParametros("Categoria", txtCategoriaCategoriasListar.Text, "string");
+            Productos p = ObtenerProducto("Producto", productosGrilla.Rows[e.RowIndex]["Producto"].ToString());
 
-            string sql = "exec CategoriasSeleccionarGrilla " + categoria;
-            categoriasGrilla = conexion.ObtenerDataTable(sql);
-
-            categoriasGrilla.Columns.Add("Modificar");
-            categoriasGrilla.Columns.Add("Baja");
-            foreach (DataRow row in categoriasGrilla.Rows)
+            if (productosGrilla.Columns[e.ColumnIndex].ColumnName == "Modificar")
             {
-                row["Modificar"] = "Modificar";
-                row["Baja"] = "Baja";
+                ModificarProductos modificar = new ModificarProductos(p);
+                modificar.Show();
             }
+            if (productosGrilla.Columns[e.ColumnIndex].ColumnName == "Baja")
+            {
+                DialogResult respuesta = MessageBox.Show("¿Esta seguro que desea dar de baja " + p.Producto + "?", "Mercante", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+                    string Producto = txtCategoriaCategoriasAgregar.Text;
 
-            GrillaCategorias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            GrillaCategorias.DataSource = categoriasGrilla;
+                    string pProducto = GenerarParametros("IdProducto", p.IdProducto.ToString(), "int"); //Aca va IdProducto
+
+                    string sql = "exec ProductosBorrar " + pProducto;
+
+                    conexion.EjecutarQuery(sql);
+
+                    MessageBox.Show(p.Producto + " ha sido eliminado con exito.");
+
+                    IniciarControlesProductos();
+                }
+            }
         }
-
         private void ClickAgregarProductosAgregar(object sender, EventArgs e)
         {
             try
@@ -180,8 +309,7 @@ namespace KioscoWF
                 int estado = Convert.ToInt32(ddlEstadoProductosAgregar.SelectedValue);
                 string detalle = txtDetalleProductosAgregar.Text;
                 string codigo = txtCodigoProductosAgregar.Text;
-
-               
+                Int32.TryParse(txtStockProductosAgregar.Text, out int stock);
 
                 if (txtPrecioProductosAgregar.Text.Contains("."))
                 {
@@ -223,9 +351,10 @@ namespace KioscoWF
                         string pEstado = GenerarParametros("IdEstado", estado.ToString(), "int");
                         string pDetalle = GenerarParametros("Detalle", detalle, "string");
                         string pCodigo = GenerarParametros("codigo", codigo, "string");
+                        string pStock = GenerarParametros("stock", stock.ToString(), "int");
 
                         string sql = "exec ProductosInsertar " + pProducto + "," + pPrecio + "," + pCategoria
-                            + "," + pDetalle + "," + pEstado + "," + pCodigo;
+                            + "," + pDetalle + "," + pEstado + "," + pCodigo + "," + pStock;
 
                         conexion.EjecutarQuery(sql);
 
@@ -233,7 +362,7 @@ namespace KioscoWF
 
                         ddlCategoriaProductosListar.SelectedValue = 0;
                         IniciarControlesProductos();
-                        
+
                         txtProductoProductosAgregar.Text = "";
                         txtPrecioProductosAgregar.Text = "";
                         ddlCategoriaProductosAgregar.SelectedValue = 1;
@@ -241,7 +370,7 @@ namespace KioscoWF
                         txtDetalleProductosAgregar.Text = "";
                         txtCodigoProductosAgregar.Text = "";
                     }
-                    else if(existeCodigo)
+                    else if (existeCodigo)
                     {
                         MessageBox.Show("Error, el codigo ingresado ya pertenece a " + nombreCodigo + ".");
                     }
@@ -259,6 +388,74 @@ namespace KioscoWF
             catch
             {
                 MessageBox.Show("Error, verifique que los valores ingresados.");
+            }
+        }
+        
+
+
+        //PAGINA CATEGORIAS
+        private void ClickBuscarCategoriasListar(object sender, EventArgs e)
+        {
+            string categoria = GenerarParametros("Categoria", txtCategoriaCategoriasListar.Text, "string");
+
+            string sql = "exec CategoriasSeleccionarGrilla " + categoria;
+            categoriasGrilla = conexion.ObtenerDataTable(sql);
+
+            categoriasGrilla.Columns.Add("Modificar");
+            categoriasGrilla.Columns.Add("Baja");
+            foreach (DataRow row in categoriasGrilla.Rows)
+            {
+                row["Modificar"] = "Modificar";
+                row["Baja"] = "Baja";
+            }
+
+            GrillaCategorias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            GrillaCategorias.DataSource = categoriasGrilla;
+        }
+        private void AccionGrillaCategorias(object sender, DataGridViewCellEventArgs e)
+        {
+            Categorias c = new Categorias();
+            c.IdCategoria = Convert.ToInt32(categoriasGrilla.Rows[e.RowIndex]["IdCategoria"].ToString());
+            c.Categoria = categoriasGrilla.Rows[e.RowIndex]["Categoria"].ToString();
+            c.Detalle = categoriasGrilla.Rows[e.RowIndex]["Detalle"].ToString();
+            //p.IdEstado = productos.Rows[e.RowIndex]["Codigo"].ToString();
+
+            if (categoriasGrilla.Columns[e.ColumnIndex].ColumnName == "Modificar")
+            {
+                if (c.IdCategoria == 1)
+                {
+                    MessageBox.Show("No se puede modificar la Categoria " + c.Categoria + ".");
+                    return;
+
+                }
+
+                ModificarCategoria modificar = new ModificarCategoria(c);
+                modificar.Show();
+                IniciarControlesCategorias();
+            }
+            if (categoriasGrilla.Columns[e.ColumnIndex].ColumnName == "Baja")
+            {
+
+                if (c.IdCategoria == 1)
+                {
+                    MessageBox.Show("No se puede dar de baja la Categoria " + c.Categoria + ".");
+                    return;
+
+                }
+                DialogResult respuesta = MessageBox.Show("¿Esta seguro que desea dar de baja " + c.Categoria + "?", "Mercante", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+
+                    string Categoria = txtCategoriaCategoriasAgregar.Text;
+
+                    string pCategoria = GenerarParametros("IdCategoria", c.IdCategoria.ToString(), "int"); //Aca va IdCategoria
+
+                    string sql = "exec CategoriasBorrar " + pCategoria;
+
+                    conexion.EjecutarQuery(sql);
+                    IniciarControlesCategorias();
+                    IniciarControlesProductos();
+                }
             }
         }
         private void ClickAgregarCategoriasAgregar(object sender, EventArgs e)
@@ -288,6 +485,9 @@ namespace KioscoWF
             }
         }
 
+
+
+        //PAGINA EXPORTAR
         private void btnFiltrarExportarPDF_Click(object sender, EventArgs e)
         {
             ventas.Rows.Clear();
@@ -391,7 +591,6 @@ namespace KioscoWF
             }
 
         }
-
         private void btnExportarExportarPDF_Click(object sender, EventArgs e)
         {
             if (ventas.Rows.Count > 0)
@@ -512,7 +711,6 @@ namespace KioscoWF
                 MessageBox.Show("No se pudo exportar.");
             }
         }
-
         private void btnExportarEditar_Click(object sender, EventArgs e)
         {
             if(btnExportarEditar.Text == "Editar")
@@ -593,7 +791,6 @@ namespace KioscoWF
             ventasModificadas.Clear();
             btnFiltrarExportarPDF_Click(null, EventArgs.Empty);
         }
-
         private void GrillaExportarPDF_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             Productos p = ObtenerProducto("Producto", ventas.Rows[e.RowIndex]["Nombre"].ToString());
@@ -619,221 +816,9 @@ namespace KioscoWF
             }
         }
 
-        private void AccionGrillaProductos(object sender, DataGridViewCellEventArgs e)
-        {
-            Productos p = ObtenerProducto("Producto", productosGrilla.Rows[e.RowIndex]["Producto"].ToString());
-            
-            if (productosGrilla.Columns[e.ColumnIndex].ColumnName == "Modificar")
-            {
-                ModificarProductos modificar = new ModificarProductos(p);
-                modificar.Show();
-            }
-            if (productosGrilla.Columns[e.ColumnIndex].ColumnName == "Baja")
-            {
-                DialogResult respuesta = MessageBox.Show("¿Esta seguro que desea dar de baja " + p.Producto + "?", "Mercante", MessageBoxButtons.YesNo);
-                if (respuesta == DialogResult.Yes)
-                {
-                    string Producto = txtCategoriaCategoriasAgregar.Text;
-
-                    string pProducto = GenerarParametros("IdProducto", p.IdProducto.ToString(), "int"); //Aca va IdProducto
-
-                    string sql = "exec ProductosBorrar " + pProducto;
-
-                    conexion.EjecutarQuery(sql);
-
-                    MessageBox.Show(p.Producto + " ha sido eliminado con exito.");
-
-                    IniciarControlesProductos();
-                }
-            }
-        }
-        private void AccionGrillaCategorias(object sender, DataGridViewCellEventArgs e)
-        {
-            Categorias c = new Categorias();
-            c.IdCategoria = Convert.ToInt32(categoriasGrilla.Rows[e.RowIndex]["IdCategoria"].ToString());
-            c.Categoria = categoriasGrilla.Rows[e.RowIndex]["Categoria"].ToString();
-            c.Detalle = categoriasGrilla.Rows[e.RowIndex]["Detalle"].ToString();
-            //p.IdEstado = productos.Rows[e.RowIndex]["Codigo"].ToString();
-
-            if (categoriasGrilla.Columns[e.ColumnIndex].ColumnName == "Modificar")
-            {
-                if(c.IdCategoria == 1)
-                {
-                    MessageBox.Show("No se puede modificar la Categoria " +  c.Categoria +".");
-                    return;
-
-                }
-
-                ModificarCategoria modificar = new ModificarCategoria(c);
-                modificar.Show();
-                IniciarControlesCategorias();
-            }
-            if (categoriasGrilla.Columns[e.ColumnIndex].ColumnName == "Baja")
-            {
-
-                if (c.IdCategoria == 1)
-                {
-                    MessageBox.Show("No se puede dar de baja la Categoria " + c.Categoria + ".");
-                    return;
-
-                }
-                DialogResult respuesta = MessageBox.Show("¿Esta seguro que desea dar de baja " + c.Categoria + "?", "Mercante", MessageBoxButtons.YesNo);
-                if (respuesta == DialogResult.Yes)
-                {
-                    
-                    string Categoria = txtCategoriaCategoriasAgregar.Text;
-
-                    string pCategoria = GenerarParametros("IdCategoria", c.IdCategoria.ToString(), "int"); //Aca va IdCategoria
-
-                    string sql = "exec CategoriasBorrar " + pCategoria ;
-
-                    conexion.EjecutarQuery(sql);
-                    IniciarControlesCategorias();
-                    IniciarControlesProductos();
-                }
-            }
-        }
-        private void AccionGrillaInicio(object sender, DataGridViewCellEventArgs e)
-        {
-            if (inicio.Columns[e.ColumnIndex].ColumnName == "Borrar")
-            {
-                BorrarVentas(e.RowIndex);
-            }
-        }
-
         
-        private void PresionarTeclaPaginas(object sender, KeyPressEventArgs e)
-        {
-           
-        }
 
-        private void SeleccionarProductoInicio(object sender, EventArgs e)
-        {
-            foreach (DataRow row in productos.Rows)
-            {
-                if (row["Producto"].ToString() == ddlProductoInicio.SelectedText)
-                {
-                    Productos p = ObtenerProducto("Producto", row["Producto"].ToString());
-                    AñadirVentas(p);
-                    ddlProductoInicio.Focus();
-                    break;
-                }
-            }
-        }
-
-        private void VaciarTextBox()
-        {
-            txtCodigoInicio.Text = "";
-            ddlProductoInicio.Text = "";
-        }
-
-        private void AñadirVentas(Productos p)
-        {
-            try
-            {
-                bool existeProducto = productosVendidos.Exists(x => x.Producto == p.Producto);
-
-                if (!existeProducto)
-                {
-                    inicio.Rows.Add(inicio.Rows.Count + 1, p.Producto, p.Categoria.Categoria, p.Precio, 1, "Borrar");
-                    productosVendidos.Add(p);
-
-                }
-                else
-                {
-                    Productos productoExistente = productosVendidos.Find(x => x.Producto == p.Producto);
-
-                    productoExistente.Cantidad++;
-
-                    foreach(DataRow r in inicio.Rows)
-                    {
-                        if(r["Nombre"].ToString() == productoExistente.Producto)
-                        {
-                            r["Cantidad"] = productoExistente.Cantidad;
-                            break;
-                        }
-                    }
-                }
-
-                CalcularTotal();
-                VaciarTextBox();
-
-                GrillaInicio.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                GrillaInicio.DataSource = inicio;
-            }
-            catch
-            {
-                MessageBox.Show("Error al añadir producto");
-            }
-        }
-        private void InsertarVentas()
-        {
-            if (productosVendidos.Count != 0)
-            {
-                foreach (Productos p in productosVendidos)
-                {
-                    for(int i = 0; i<p.Cantidad; i++)
-                    {
-                        string pIdProducto = GenerarParametros("IdProducto", p.IdProducto.ToString(), "int");
-                        string pFecha = GenerarParametros("Fecha", DateTime.Now.ToShortDateString(), "date");
-                        string sql = "EXEC VentasInsertar " + pIdProducto + ", " + pFecha;
-                        conexion.EjecutarQuery(sql);
-                    }
-                }
-
-                VaciarTextBox();
-                CalcularTotal();
-                VaciarVentas();
-                productosVendidos.Clear();
-            }
-            else
-            {
-                MessageBox.Show("No hay productos cargados");
-            }
-
-        }
-        private void BorrarVentas(int index)
-        {
-            int contador = 0;
-
-            foreach (Productos prod in productosVendidos)
-            {
-                if (contador == index)
-                {
-                    productosVendidos.Remove(prod);
-                    break;
-                }
-                contador++;
-            }
-            inicio.Rows[index].Delete();
-            CalcularTotal();
-        }
-        private void VaciarVentas()
-        {
-            productosVendidos.Clear();
-            int cantidadRows = inicio.Rows.Count;
-            for (int i = 1; i <= cantidadRows; i++)
-            {
-                inicio.Rows.Remove(inicio.Rows[0]);
-            }
-            CalcularTotal();
-            VaciarTextBox();
-        }
-
-        private void CalcularTotal()
-        {
-            total = 0;
-            foreach (Productos prod in productosVendidos)
-            {
-                for(int i = 0; i<prod.Cantidad; i++)
-                {
-                    total += prod.Precio;
-                }
-            }
-            txtTotaIInicio.Text = total.ToString();
-        }
-
-
+        //FUNCIONES GENERALES
         private string GenerarParametros(string nombre, string valor, string tipo)
         {
             string parametros = "@";
@@ -846,7 +831,7 @@ namespace KioscoWF
             {
                 parametros += nombre + "=" + valor + " ";
             }
-            else if(tipo == "decimal")
+            else if (tipo == "decimal")
             {
                 if (valor.Contains(","))
                 {
@@ -854,13 +839,13 @@ namespace KioscoWF
                 }
                 else
                 {
-                     parametros += nombre + "=" + valor + " ";
+                    parametros += nombre + "=" + valor + " ";
                 }
             }
-            else if(tipo == "date")
+            else if (tipo == "date")
             {
                 string[] strs = valor.Split('/');
-                if(strs[1].Length == 1)
+                if (strs[1].Length == 1)
                 {
                     strs[1] = "0" + strs[1];
                 }
@@ -873,84 +858,11 @@ namespace KioscoWF
             }
             return parametros;
         }
-
-        private Productos ObtenerProducto(string rowNombre, string dato)
-        {
-            Productos p = new Productos();
-
-            foreach (DataRow row in productos.Rows)
-            {
-                if (row[rowNombre].ToString() == dato)
-                {
-                    p.IdProducto = Convert.ToInt32(row["IdProducto"]);
-                    p.Codigo = row["Codigo"].ToString();
-                    p.Producto = row["Producto"].ToString();
-                    p.Precio = Convert.ToDecimal(row["Precio"]);
-                    p.Categoria.IdCategoria = Convert.ToInt32(row["IdCategoria"]);
-                    p.Detalle = row["Detalle"].ToString();
-                    p.IdEstado = Convert.ToInt32(row["IdEstado"]);
-
-                    foreach(DataRow row2 in categorias.Rows)
-                    {
-                        if(row2["IdCategoria"].ToString() == p.Categoria.IdCategoria.ToString())
-                        {
-                            p.Categoria.Categoria = row2["Categoria"].ToString();
-                        }
-                    }
-
-                    break;
-                }
-            }
-            return p;
-        }
-
-        private void PresionarTeclaPaginas(object sender, KeyEventArgs e)
-        {
-            if (Paginas.SelectedTab.Text == "Inicio")
-            {
-                if (e.KeyValue == (char)Keys.Enter)
-                {
-                    bool ingresarProducto = false;
-                    
-                    if(txtCodigoInicio.Text != string.Empty)
-                    {
-                        foreach (DataRow row in productos.Rows)
-                        {
-                            if (row["Codigo"].ToString() == txtCodigoInicio.Text)
-                            {
-                                Productos p = ObtenerProducto("Codigo", row["Codigo"].ToString());
-                                AñadirVentas(p);
-                                txtCodigoInicio.Focus();
-
-                                ingresarProducto = true;
-                                break;
-                            }
-                        }
-                        if (!ingresarProducto)
-                        {
-                            VaciarTextBox();
-                            MessageBox.Show("Error al ingresar producto.");
-                        }
-                    }
-                }
-                else if (e.KeyValue == (char)Keys.ControlKey)
-                {
-                    InsertarVentas();
-                }
-                else if (e.KeyValue == (char)Keys.Escape)
-                {
-                    VaciarVentas();
-                }
-            }
-        }
-
         private void CambioPestañaProductos(object sender, EventArgs e)
         {
-
             ddlCategoriaProductosAgregar.SelectedValue = 1;
             ddlCategoriaProductosListar.SelectedValue = 1;
         }
-
         private void CambioPestañaPaginas(object sender, EventArgs e)
         {
             ddlEstadoProductosAgregar.SelectedValue = 1;
@@ -961,38 +873,6 @@ namespace KioscoWF
             {
                 ventas.Rows.Remove(ventas.Rows[0]);
             }
-
-        }
-
-        private void GrillaInicio_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if(inicio.Columns[e.ColumnIndex].ColumnName == "Cantidad")
-            {
-                Productos p = productosVendidos.Find(x => x.Producto == inicio.Rows[e.RowIndex]["Nombre"].ToString());
-                try
-                {
-                    p.Cantidad = Convert.ToInt32(inicio.Rows[e.RowIndex]["Cantidad"].ToString());
-                    CalcularTotal();
-                }
-                catch 
-                {
-                    foreach (DataRow r in inicio.Rows)
-                    {
-                        if (r["Nombre"].ToString() == p.Producto)
-                        {
-                            r["Cantidad"] = p.Cantidad;
-                            break;
-                        }
-                    }
-                    MessageBox.Show("Error. Ingrese una cantidad valida.");
-                }
-            }
-        }
-
-        private void Mercante_Load(object sender, EventArgs e)
-        {
-
         }
     }
-
 }

@@ -21,13 +21,8 @@ namespace KioscoWF
             categorias = c;
             InitializeComponent();
 
-            //ddlCategoria.Items.AddRange = 
-            //ddlEstado.Items.AddRange =
-
             txtNombreC.Text = categorias.Categoria;
             txtDetalleC.Text = categorias.Detalle;
-            //ddlCategoria.SelectedIndex = categorias.IdCategoria;
-            //ddlEstado.SelectedIndex = p.IdEstado;
         }
         private void Modificar_Categoria_Load(object sender, EventArgs e)
         {

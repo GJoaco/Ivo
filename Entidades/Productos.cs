@@ -10,13 +10,12 @@ namespace Entidades
         public string Detalle { get; set; }
         public int IdEstado { get; set; }
         public string Codigo { get; set; }
-        public int Cantidad { get; set; }
+        public int Stock{ get; set; }
         public Categorias Categoria { get; set; }
 
         public Productos()
         {
-            Categoria = new Categorias();
-            Cantidad = 1;
+            Categoria = new Categorias();            
         }
     }
 }

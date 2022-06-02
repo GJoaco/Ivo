@@ -32,18 +32,22 @@ namespace KioscoWF
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kiosco));
             this.Paginas = new System.Windows.Forms.TabControl();
             this.tbInicio = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
             this.txtCodigoInicio = new System.Windows.Forms.TextBox();
-            this.btnAceptarInicio = new System.Windows.Forms.Button();
             this.ddlProductoInicio = new System.Windows.Forms.ComboBox();
-            this.btnCancelarInicio = new System.Windows.Forms.Button();
             this.lblProductoInicio = new System.Windows.Forms.Label();
-            this.lblTotalInicio = new System.Windows.Forms.Label();
-            this.txtTotaIInicio = new System.Windows.Forms.TextBox();
             this.lblCodigoInicio = new System.Windows.Forms.Label();
-            this.GrillaInicio = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtCodigoMostrar = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtProductoMostrar = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPrecioMostrar = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtStockMostrar = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.tbProducto = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -58,22 +62,23 @@ namespace KioscoWF
             this.btnBuscarProductosListar = new System.Windows.Forms.Button();
             this.GrillaProductos = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnAgregarProductosAgregar = new System.Windows.Forms.Button();
-            this.ddlEstadoProductosAgregar = new System.Windows.Forms.ComboBox();
-            this.lblCodigo = new System.Windows.Forms.Label();
+            this.txtStockProductosAgregar = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.txtCodigoProductosAgregar = new System.Windows.Forms.TextBox();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.lblDetalle = new System.Windows.Forms.Label();
-            this.txtProductoProductosAgregar = new System.Windows.Forms.TextBox();
+            this.lblCodigo = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtDetalleProductosAgregar = new System.Windows.Forms.TextBox();
-            this.ddlCategoriaProductosAgregar = new System.Windows.Forms.ComboBox();
-            this.lblPrecio = new System.Windows.Forms.Label();
+            this.lblDetalle = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.txtProductoProductosAgregar = new System.Windows.Forms.TextBox();
             this.lblEstado = new System.Windows.Forms.Label();
+            this.ddlCategoriaProductosAgregar = new System.Windows.Forms.ComboBox();
+            this.ddlEstadoProductosAgregar = new System.Windows.Forms.ComboBox();
+            this.lblPrecio = new System.Windows.Forms.Label();
             this.txtPrecioProductosAgregar = new System.Windows.Forms.TextBox();
             this.lblCategoria = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.Categorias = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
@@ -107,12 +112,11 @@ namespace KioscoWF
             this.btnExportarExportarPDF = new System.Windows.Forms.Button();
             this.btnExportarEditar = new System.Windows.Forms.Button();
             this.btnExportarCancelar = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Paginas.SuspendLayout();
             this.tbInicio.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrillaInicio)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.tbProducto.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -120,7 +124,6 @@ namespace KioscoWF
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaProductos)).BeginInit();
             this.tabPage5.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.Categorias.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -152,91 +155,109 @@ namespace KioscoWF
             // 
             // tbInicio
             // 
-            this.tbInicio.Controls.Add(this.tableLayoutPanel2);
+            this.tbInicio.Controls.Add(this.tableLayoutPanel5);
             resources.ApplyResources(this.tbInicio, "tbInicio");
             this.tbInicio.Name = "tbInicio";
             this.tbInicio.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel2
+            // tableLayoutPanel5
             // 
-            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.GrillaInicio, 0, 1);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtCodigoInicio, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnAceptarInicio, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.ddlProductoInicio, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btnCancelarInicio, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblProductoInicio, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblTotalInicio, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtTotaIInicio, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblCodigoInicio, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
             // 
             // txtCodigoInicio
             // 
             resources.ApplyResources(this.txtCodigoInicio, "txtCodigoInicio");
             this.txtCodigoInicio.Name = "txtCodigoInicio";
             // 
-            // btnAceptarInicio
-            // 
-            resources.ApplyResources(this.btnAceptarInicio, "btnAceptarInicio");
-            this.btnAceptarInicio.Name = "btnAceptarInicio";
-            this.btnAceptarInicio.UseVisualStyleBackColor = true;
-            this.btnAceptarInicio.Click += new System.EventHandler(this.btnAceptarInicio_Click);
-            // 
             // ddlProductoInicio
             // 
             this.ddlProductoInicio.AllowDrop = true;
             resources.ApplyResources(this.ddlProductoInicio, "ddlProductoInicio");
             this.ddlProductoInicio.Name = "ddlProductoInicio";
-            this.ddlProductoInicio.TextChanged += new System.EventHandler(this.SeleccionarProductoInicio);
-            // 
-            // btnCancelarInicio
-            // 
-            resources.ApplyResources(this.btnCancelarInicio, "btnCancelarInicio");
-            this.btnCancelarInicio.Name = "btnCancelarInicio";
-            this.btnCancelarInicio.UseVisualStyleBackColor = true;
-            this.btnCancelarInicio.Click += new System.EventHandler(this.btnCancelarInicio_Click);
             // 
             // lblProductoInicio
             // 
             resources.ApplyResources(this.lblProductoInicio, "lblProductoInicio");
             this.lblProductoInicio.Name = "lblProductoInicio";
             // 
-            // lblTotalInicio
-            // 
-            resources.ApplyResources(this.lblTotalInicio, "lblTotalInicio");
-            this.lblTotalInicio.Name = "lblTotalInicio";
-            // 
-            // txtTotaIInicio
-            // 
-            resources.ApplyResources(this.txtTotaIInicio, "txtTotaIInicio");
-            this.txtTotaIInicio.Name = "txtTotaIInicio";
-            // 
             // lblCodigoInicio
             // 
             resources.ApplyResources(this.lblCodigoInicio, "lblCodigoInicio");
             this.lblCodigoInicio.Name = "lblCodigoInicio";
             // 
-            // GrillaInicio
+            // label9
             // 
-            resources.ApplyResources(this.GrillaInicio, "GrillaInicio");
-            this.GrillaInicio.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.GrillaInicio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GrillaInicio.Name = "GrillaInicio";
-            this.GrillaInicio.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AccionGrillaInicio);
-            this.GrillaInicio.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaInicio_CellValueChanged);
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // tableLayoutPanel2
+            // 
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.txtCodigoMostrar, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label20, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtProductoMostrar, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label10, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtPrecioMostrar, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label13, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtStockMostrar, 3, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label18, 3, 1);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            // 
+            // txtCodigoMostrar
+            // 
+            resources.ApplyResources(this.txtCodigoMostrar, "txtCodigoMostrar");
+            this.txtCodigoMostrar.Name = "txtCodigoMostrar";
+            this.txtCodigoMostrar.ReadOnly = true;
+            // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
+            // txtProductoMostrar
+            // 
+            resources.ApplyResources(this.txtProductoMostrar, "txtProductoMostrar");
+            this.txtProductoMostrar.Name = "txtProductoMostrar";
+            this.txtProductoMostrar.ReadOnly = true;
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // txtPrecioMostrar
+            // 
+            resources.ApplyResources(this.txtPrecioMostrar, "txtPrecioMostrar");
+            this.txtPrecioMostrar.Name = "txtPrecioMostrar";
+            this.txtPrecioMostrar.ReadOnly = true;
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // txtStockMostrar
+            // 
+            resources.ApplyResources(this.txtStockMostrar, "txtStockMostrar");
+            this.txtStockMostrar.Name = "txtStockMostrar";
+            // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
             // 
             // tbProducto
             // 
@@ -329,35 +350,26 @@ namespace KioscoWF
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.tableLayoutPanel5);
+            this.tabPage5.Controls.Add(this.btnAgregarProductosAgregar);
+            this.tabPage5.Controls.Add(this.txtStockProductosAgregar);
+            this.tabPage5.Controls.Add(this.label19);
+            this.tabPage5.Controls.Add(this.txtCodigoProductosAgregar);
+            this.tabPage5.Controls.Add(this.lblCodigo);
+            this.tabPage5.Controls.Add(this.label4);
+            this.tabPage5.Controls.Add(this.txtDetalleProductosAgregar);
+            this.tabPage5.Controls.Add(this.lblDetalle);
             this.tabPage5.Controls.Add(this.label5);
+            this.tabPage5.Controls.Add(this.lblNombre);
+            this.tabPage5.Controls.Add(this.txtProductoProductosAgregar);
+            this.tabPage5.Controls.Add(this.lblEstado);
+            this.tabPage5.Controls.Add(this.ddlCategoriaProductosAgregar);
+            this.tabPage5.Controls.Add(this.ddlEstadoProductosAgregar);
+            this.tabPage5.Controls.Add(this.lblPrecio);
+            this.tabPage5.Controls.Add(this.txtPrecioProductosAgregar);
+            this.tabPage5.Controls.Add(this.lblCategoria);
             resources.ApplyResources(this.tabPage5, "tabPage5");
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel5
-            // 
-            resources.ApplyResources(this.tableLayoutPanel5, "tableLayoutPanel5");
-            this.tableLayoutPanel5.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btnAgregarProductosAgregar, 0, 13);
-            this.tableLayoutPanel5.Controls.Add(this.ddlEstadoProductosAgregar, 0, 8);
-            this.tableLayoutPanel5.Controls.Add(this.lblCodigo, 0, 11);
-            this.tableLayoutPanel5.Controls.Add(this.txtCodigoProductosAgregar, 0, 12);
-            this.tableLayoutPanel5.Controls.Add(this.lblNombre, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.lblDetalle, 0, 9);
-            this.tableLayoutPanel5.Controls.Add(this.txtProductoProductosAgregar, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.txtDetalleProductosAgregar, 0, 10);
-            this.tableLayoutPanel5.Controls.Add(this.ddlCategoriaProductosAgregar, 0, 6);
-            this.tableLayoutPanel5.Controls.Add(this.lblPrecio, 0, 3);
-            this.tableLayoutPanel5.Controls.Add(this.lblEstado, 0, 7);
-            this.tableLayoutPanel5.Controls.Add(this.txtPrecioProductosAgregar, 0, 4);
-            this.tableLayoutPanel5.Controls.Add(this.lblCategoria, 0, 5);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
             // 
             // btnAgregarProductosAgregar
             // 
@@ -366,42 +378,60 @@ namespace KioscoWF
             this.btnAgregarProductosAgregar.UseVisualStyleBackColor = true;
             this.btnAgregarProductosAgregar.Click += new System.EventHandler(this.ClickAgregarProductosAgregar);
             // 
-            // ddlEstadoProductosAgregar
+            // txtStockProductosAgregar
             // 
-            this.ddlEstadoProductosAgregar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlEstadoProductosAgregar.FormattingEnabled = true;
-            resources.ApplyResources(this.ddlEstadoProductosAgregar, "ddlEstadoProductosAgregar");
-            this.ddlEstadoProductosAgregar.Name = "ddlEstadoProductosAgregar";
+            resources.ApplyResources(this.txtStockProductosAgregar, "txtStockProductosAgregar");
+            this.txtStockProductosAgregar.Name = "txtStockProductosAgregar";
             // 
-            // lblCodigo
+            // label19
             // 
-            resources.ApplyResources(this.lblCodigo, "lblCodigo");
-            this.lblCodigo.Name = "lblCodigo";
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
             // 
             // txtCodigoProductosAgregar
             // 
             resources.ApplyResources(this.txtCodigoProductosAgregar, "txtCodigoProductosAgregar");
             this.txtCodigoProductosAgregar.Name = "txtCodigoProductosAgregar";
             // 
-            // lblNombre
+            // lblCodigo
             // 
-            resources.ApplyResources(this.lblNombre, "lblNombre");
-            this.lblNombre.Name = "lblNombre";
+            resources.ApplyResources(this.lblCodigo, "lblCodigo");
+            this.lblCodigo.Name = "lblCodigo";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // txtDetalleProductosAgregar
+            // 
+            resources.ApplyResources(this.txtDetalleProductosAgregar, "txtDetalleProductosAgregar");
+            this.txtDetalleProductosAgregar.Name = "txtDetalleProductosAgregar";
             // 
             // lblDetalle
             // 
             resources.ApplyResources(this.lblDetalle, "lblDetalle");
             this.lblDetalle.Name = "lblDetalle";
             // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // lblNombre
+            // 
+            resources.ApplyResources(this.lblNombre, "lblNombre");
+            this.lblNombre.Name = "lblNombre";
+            // 
             // txtProductoProductosAgregar
             // 
             resources.ApplyResources(this.txtProductoProductosAgregar, "txtProductoProductosAgregar");
             this.txtProductoProductosAgregar.Name = "txtProductoProductosAgregar";
             // 
-            // txtDetalleProductosAgregar
+            // lblEstado
             // 
-            resources.ApplyResources(this.txtDetalleProductosAgregar, "txtDetalleProductosAgregar");
-            this.txtDetalleProductosAgregar.Name = "txtDetalleProductosAgregar";
+            resources.ApplyResources(this.lblEstado, "lblEstado");
+            this.lblEstado.Name = "lblEstado";
             // 
             // ddlCategoriaProductosAgregar
             // 
@@ -410,15 +440,17 @@ namespace KioscoWF
             resources.ApplyResources(this.ddlCategoriaProductosAgregar, "ddlCategoriaProductosAgregar");
             this.ddlCategoriaProductosAgregar.Name = "ddlCategoriaProductosAgregar";
             // 
+            // ddlEstadoProductosAgregar
+            // 
+            this.ddlEstadoProductosAgregar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlEstadoProductosAgregar.FormattingEnabled = true;
+            resources.ApplyResources(this.ddlEstadoProductosAgregar, "ddlEstadoProductosAgregar");
+            this.ddlEstadoProductosAgregar.Name = "ddlEstadoProductosAgregar";
+            // 
             // lblPrecio
             // 
             resources.ApplyResources(this.lblPrecio, "lblPrecio");
             this.lblPrecio.Name = "lblPrecio";
-            // 
-            // lblEstado
-            // 
-            resources.ApplyResources(this.lblEstado, "lblEstado");
-            this.lblEstado.Name = "lblEstado";
             // 
             // txtPrecioProductosAgregar
             // 
@@ -429,11 +461,6 @@ namespace KioscoWF
             // 
             resources.ApplyResources(this.lblCategoria, "lblCategoria");
             this.lblCategoria.Name = "lblCategoria";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
             // 
             // tabPage3
             // 
@@ -662,13 +689,13 @@ namespace KioscoWF
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.Paginas);
             this.Name = "Kiosco";
-            this.Load += new System.EventHandler(this.Mercante_Load);
             this.Paginas.ResumeLayout(false);
             this.tbInicio.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrillaInicio)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.tbProducto.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -678,8 +705,6 @@ namespace KioscoWF
             ((System.ComponentModel.ISupportInitialize)(this.GrillaProductos)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.Categorias.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
@@ -702,7 +727,6 @@ namespace KioscoWF
         #endregion
 
         private System.Windows.Forms.TabControl Paginas;
-        private System.Windows.Forms.TabPage tbInicio;
         private System.Windows.Forms.TabPage tbProducto;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage4;
@@ -750,27 +774,13 @@ namespace KioscoWF
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox ddlCategoriaProductosListar;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label lblCodigoInicio;
-        private System.Windows.Forms.DataGridView GrillaInicio;
-        private System.Windows.Forms.TextBox txtTotaIInicio;
-        private System.Windows.Forms.Label lblTotalInicio;
-        private System.Windows.Forms.Label lblProductoInicio;
-        private System.Windows.Forms.TextBox txtCodigoInicio;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnAceptarInicio;
-        private System.Windows.Forms.Button btnCancelarInicio;
-        private System.Windows.Forms.ComboBox ddlProductoInicio;
         private System.Windows.Forms.TabPage ExportarPDF;
         private System.Windows.Forms.DataGridView GrillaExportarPDF;
         private System.Windows.Forms.Button btnExportarExportarPDF;
         private System.Windows.Forms.Button btnFiltrarExportarPDF;
         private System.Windows.Forms.DateTimePicker txtFechaExportarPDF;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
@@ -779,6 +789,25 @@ namespace KioscoWF
         private System.Windows.Forms.DateTimePicker txtFechaHastaExportarPDF;
         private System.Windows.Forms.Button btnExportarEditar;
         private System.Windows.Forms.Button btnExportarCancelar;
+        private System.Windows.Forms.TabPage tbInicio;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtCodigoInicio;
+        private System.Windows.Forms.ComboBox ddlProductoInicio;
+        private System.Windows.Forms.Label lblProductoInicio;
+        private System.Windows.Forms.Label lblCodigoInicio;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TextBox txtCodigoMostrar;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtProductoMostrar;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtPrecioMostrar;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtStockMostrar;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtStockProductosAgregar;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
     }
 }
 

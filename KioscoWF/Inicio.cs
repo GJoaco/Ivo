@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using ExcelDataReader;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
@@ -23,8 +24,8 @@ namespace KioscoWF
         private DataTable categorias;
         private DataTable categoriasGrilla;
         private DataTable estados;
+        private DataSet excel;
         private Productos productoSeleccionado;
-
         public AutoCompleteSource AutoCompleteSource { get; set; }
         public AutoCompleteMode AutoCompleteMode { get; set; }
         public AutoCompleteStringCollection AutoCompleteCustomSource { get; set; }
@@ -41,6 +42,7 @@ namespace KioscoWF
         private void IniciarControles()
         {
             conexion = new Conexion();
+            excel = new DataSet();
 
             IniciarControlesCategorias();
             IniciarControlesProductos();
@@ -338,6 +340,7 @@ namespace KioscoWF
                             }
                         }
                     }
+
                     if (!existeCodigo && !existeProducto)
                     {
                         string pProducto = GenerarParametros("Producto", producto, "string");
@@ -480,8 +483,12 @@ namespace KioscoWF
             }
         }
 
-        
 
+
+        //PAGINA EXCEL
+
+
+        
         //FUNCIONES GENERALES
         private string GenerarParametros(string nombre, string valor, string tipo)
         {
@@ -531,6 +538,147 @@ namespace KioscoWF
         {
             ddlEstadoProductosAgregar.SelectedValue = 1;
             ddlEstadoCategoriasAgregar.SelectedValue = 1;
+        }
+
+        private void btnImportarExcel_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog oOpenFileDialog = new OpenFileDialog();
+            oOpenFileDialog.Filter = "Excel Worbook|*.xlsx";
+
+            if (oOpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ddlHojasExcel.Items.Clear();
+                GrillaExcel.DataSource = null;
+
+                txtRutaExcel.Text = oOpenFileDialog.FileName;
+
+                FileStream fsSource = new FileStream(oOpenFileDialog.FileName, FileMode.Open, FileAccess.Read);
+
+                IExcelDataReader reader = ExcelReaderFactory.CreateReader(fsSource);
+
+                excel = reader.AsDataSet(new ExcelDataSetConfiguration()
+                {
+                    ConfigureDataTable = (tableReader) => new ExcelDataTableConfiguration()
+                    {
+                        UseHeaderRow = true
+                    }
+                });
+
+                foreach (DataTable tabla in excel.Tables)
+                {
+                    ddlHojasExcel.Items.Add(tabla.TableName);
+                }
+
+                ddlHojasExcel.SelectedIndex = 0;
+
+                reader.Close();
+            }
+        }
+
+        private void btnMostrarExcel_Click(object sender, EventArgs e)
+        {
+            GrillaExcel.DataSource = excel.Tables[ddlHojasExcel.SelectedIndex];
+        }
+
+        private void btnSubirExcel_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Esta seguro que desea subir estos producotos a la base de datos?", "Negocio",MessageBoxButtons.YesNo);
+
+            if(respuesta == DialogResult.Yes)
+            {
+                DataTable data = (DataTable)(GrillaExcel.DataSource);
+                bool existeCodigo;
+                bool existeProducto;
+                Productos producto;
+                List<Productos> productosAgregados = new List<Productos>();
+                List<Productos> productosActualizados = new List<Productos>();
+                List<Productos> productosRechazados = new List<Productos>();
+
+                foreach (DataRow row in data.Rows)
+                {
+                    existeCodigo = false;
+                    existeProducto = false;
+                    producto = new Productos();
+
+                    producto.Producto = row["Nombre"].ToString();
+                    producto.Detalle = row["Detalle"].ToString();
+                    producto.Codigo = row["Codigo"].ToString();
+
+                    try
+                    {
+                        producto.Categoria.IdCategoria = Convert.ToInt32(row["IdCategoria"].ToString());
+                        producto.Precio = Convert.ToInt32(row["Precio"].ToString());
+                        producto.IdEstado = Convert.ToInt32(row["IdEstado"].ToString());
+                        producto.Stock = Convert.ToInt32(row["Stock"].ToString());
+
+                        if (producto.Producto != string.Empty && producto.IdEstado > 0 && producto.Precio > 0 && producto.Categoria.IdCategoria > 0 && producto.Stock >= 0)
+                        {
+                            foreach (DataRow row2 in productos.Rows)
+                            {
+                                if (row2["Codigo"].ToString() != "")
+                                {
+                                    if (row2["Codigo"].ToString() == producto.Codigo)
+                                    {
+                                        existeCodigo = true;
+                                        break;
+                                    }
+                                }
+                                if (row2["Producto"].ToString() != "")
+                                {
+                                    if (row2["Producto"].ToString() == producto.Producto)
+                                    {
+                                        producto.IdProducto = Convert.ToInt32(row2["IdProducto"].ToString());
+                                        existeProducto = true;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (!existeCodigo)
+                            {
+                                string pIdProducto = GenerarParametros("IdProducto", producto.IdProducto.ToString(), "int");
+                                string pProducto = GenerarParametros("Producto", producto.Producto, "string");
+                                string pPrecio = GenerarParametros("Precio", producto.Precio.ToString(), "decimal");
+                                string pCategoria = GenerarParametros("IdCategoria", producto.Categoria.IdCategoria.ToString(), "int");
+                                string pEstado = GenerarParametros("IdEstado", producto.IdEstado.ToString(), "int");
+                                string pDetalle = GenerarParametros("Detalle", producto.Detalle, "string");
+                                string pCodigo = GenerarParametros("codigo", producto.Codigo, "string");
+                                string pStock = GenerarParametros("stock", producto.Stock.ToString(), "int");
+
+                                string sql;
+
+                                if (!existeProducto)
+                                {
+                                    sql = "exec ProductosInsertar " + pProducto + "," + pPrecio + "," + pCategoria
+                                        + "," + pDetalle + "," + pEstado + "," + pCodigo + "," + pStock;
+
+                                    productosAgregados.Add(producto);
+                                }
+                                else
+                                {
+                                    sql = "exec ProductosModificar " + pIdProducto + ',' + pProducto + ',' + pPrecio 
+                                        + ',' + pCategoria + ',' + pDetalle + ',' + pCodigo + ',' + pEstado + ',' + pStock;
+
+                                    productosActualizados.Add(producto);
+                                }
+                                conexion.EjecutarQuery(sql);
+                            }
+                            else
+                            {
+                                productosRechazados.Add(producto);
+                            }
+                        }
+                        else
+                        {
+                            productosRechazados.Add(producto);
+                        }
+                    }
+                    catch 
+                    {
+                        productosRechazados.Add(producto);
+                    }
+                }
+            }
         }
     }
 }

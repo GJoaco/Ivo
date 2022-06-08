@@ -1412,7 +1412,7 @@
     <value>3, 0</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 23</value>
+    <value>76, 23</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1433,10 +1433,10 @@
     <value>0</value>
   </data>
   <data name="txtCategoriaCategoriasListar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 3</value>
+    <value>85, 3</value>
   </data>
   <data name="txtCategoriaCategoriasListar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 23</value>
+    <value>165, 23</value>
   </data>
   <data name="txtCategoriaCategoriasListar.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1457,7 +1457,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBuscarCategoriasListar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 3</value>
+    <value>256, 3</value>
   </data>
   <data name="btnBuscarCategoriasListar.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1508,7 +1508,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label17" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtCategoriaCategoriasListar" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBuscarCategoriasListar" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,32,59668,Percent,67,40331,Absolute,977" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label17" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtCategoriaCategoriasListar" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBuscarCategoriasListar" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,32,59668,Percent,67,40331,Absolute,981" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GrillaCategorias.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -2035,34 +2035,34 @@
   <data name="tableLayoutPanel10.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="GrillaExportarPDF.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="GrillaExcel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="GrillaExportarPDF.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="GrillaExcel.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 114</value>
   </data>
-  <data name="GrillaExportarPDF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="GrillaExcel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="GrillaExportarPDF.RowHeadersWidth" type="System.Int32, mscorlib">
+  <data name="GrillaExcel.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>51</value>
   </data>
-  <data name="GrillaExportarPDF.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="GrillaExcel.Size" type="System.Drawing.Size, System.Drawing">
     <value>1252, 362</value>
   </data>
-  <data name="GrillaExportarPDF.TabIndex" type="System.Int32, mscorlib">
+  <data name="GrillaExcel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;GrillaExportarPDF.Name" xml:space="preserve">
-    <value>GrillaExportarPDF</value>
+  <data name="&gt;&gt;GrillaExcel.Name" xml:space="preserve">
+    <value>GrillaExcel</value>
   </data>
-  <data name="&gt;&gt;GrillaExportarPDF.Type" xml:space="preserve">
+  <data name="&gt;&gt;GrillaExcel.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;GrillaExportarPDF.Parent" xml:space="preserve">
+  <data name="&gt;&gt;GrillaExcel.Parent" xml:space="preserve">
     <value>tableLayoutPanel10</value>
   </data>
-  <data name="&gt;&gt;GrillaExportarPDF.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;GrillaExcel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tableLayoutPanel9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -2071,173 +2071,185 @@
   <data name="tableLayoutPanel9.ColumnCount" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="btnFiltrarExportarPDF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>450, 2</value>
+  <data name="txtRutaExcel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 3</value>
   </data>
-  <data name="btnFiltrarExportarPDF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="txtRutaExcel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 23</value>
   </data>
-  <data name="btnFiltrarExportarPDF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 24</value>
-  </data>
-  <data name="btnFiltrarExportarPDF.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtRutaExcel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="btnFiltrarExportarPDF.Text" xml:space="preserve">
-    <value>Filtrar</value>
+  <data name="&gt;&gt;txtRutaExcel.Name" xml:space="preserve">
+    <value>txtRutaExcel</value>
   </data>
-  <data name="&gt;&gt;btnFiltrarExportarPDF.Name" xml:space="preserve">
-    <value>btnFiltrarExportarPDF</value>
+  <data name="&gt;&gt;txtRutaExcel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnFiltrarExportarPDF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnFiltrarExportarPDF.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtRutaExcel.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
   </data>
-  <data name="&gt;&gt;btnFiltrarExportarPDF.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtRutaExcel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="txtFechaExportarPDF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
+  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="txtFechaExportarPDF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
   </data>
-  <data name="txtFechaExportarPDF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 23</value>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
   </data>
-  <data name="txtFechaExportarPDF.TabIndex" type="System.Int32, mscorlib">
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 19</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;txtFechaExportarPDF.Name" xml:space="preserve">
-    <value>txtFechaExportarPDF</value>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Ruta</value>
   </data>
-  <data name="&gt;&gt;txtFechaExportarPDF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
   </data>
-  <data name="&gt;&gt;txtFechaExportarPDF.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
   </data>
-  <data name="&gt;&gt;txtFechaExportarPDF.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="txtFechaHastaExportarPDF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 2</value>
+  <data name="btnImportarExcel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 3</value>
   </data>
-  <data name="txtFechaHastaExportarPDF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="btnImportarExcel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="txtFechaHastaExportarPDF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 23</value>
-  </data>
-  <data name="txtFechaHastaExportarPDF.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtFechaHastaExportarPDF.Name" xml:space="preserve">
-    <value>txtFechaHastaExportarPDF</value>
-  </data>
-  <data name="&gt;&gt;txtFechaHastaExportarPDF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFechaHastaExportarPDF.Parent" xml:space="preserve">
-    <value>tableLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;txtFechaHastaExportarPDF.ZOrder" xml:space="preserve">
+  <data name="btnImportarExcel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="btnExportarExportarPDF.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="btnImportarExcel.Text" xml:space="preserve">
+    <value>Explorar</value>
   </data>
-  <data name="btnExportarExportarPDF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>514, 2</value>
+  <data name="&gt;&gt;btnImportarExcel.Name" xml:space="preserve">
+    <value>btnImportarExcel</value>
   </data>
-  <data name="btnExportarExportarPDF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;btnImportarExcel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnExportarExportarPDF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 24</value>
+  <data name="&gt;&gt;btnImportarExcel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
   </data>
-  <data name="btnExportarExportarPDF.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;btnImportarExcel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="btnExportarExportarPDF.Text" xml:space="preserve">
-    <value>Exportar</value>
+  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;btnExportarExportarPDF.Name" xml:space="preserve">
-    <value>btnExportarExportarPDF</value>
+  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10pt</value>
   </data>
-  <data name="&gt;&gt;btnExportarExportarPDF.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;btnExportarExportarPDF.Parent" xml:space="preserve">
-    <value>tableLayoutPanel9</value>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 75</value>
   </data>
-  <data name="&gt;&gt;btnExportarExportarPDF.ZOrder" xml:space="preserve">
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 19</value>
+  </data>
+  <data name="label22.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="btnExportarEditar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Hojas</value>
   </data>
-  <data name="btnExportarEditar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>579, 2</value>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
   </data>
-  <data name="btnExportarEditar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnExportarEditar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 24</value>
-  </data>
-  <data name="btnExportarEditar.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="btnExportarEditar.Text" xml:space="preserve">
-    <value>Editar</value>
-  </data>
-  <data name="&gt;&gt;btnExportarEditar.Name" xml:space="preserve">
-    <value>btnExportarEditar</value>
-  </data>
-  <data name="&gt;&gt;btnExportarEditar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnExportarEditar.Parent" xml:space="preserve">
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
   </data>
-  <data name="&gt;&gt;btnExportarEditar.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
-  <data name="btnExportarCancelar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btnMostrarExcel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnExportarCancelar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>645, 2</value>
+  <data name="btnMostrarExcel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 78</value>
   </data>
-  <data name="btnExportarCancelar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+  <data name="btnMostrarExcel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
   </data>
-  <data name="btnExportarCancelar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 24</value>
+  <data name="btnMostrarExcel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="btnExportarCancelar.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="btnMostrarExcel.Text" xml:space="preserve">
+    <value>Mostrar</value>
   </data>
-  <data name="btnExportarCancelar.Text" xml:space="preserve">
-    <value>Cancelar</value>
+  <data name="&gt;&gt;btnMostrarExcel.Name" xml:space="preserve">
+    <value>btnMostrarExcel</value>
   </data>
-  <data name="btnExportarCancelar.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;btnExportarCancelar.Name" xml:space="preserve">
-    <value>btnExportarCancelar</value>
-  </data>
-  <data name="&gt;&gt;btnExportarCancelar.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnMostrarExcel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnExportarCancelar.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnMostrarExcel.Parent" xml:space="preserve">
     <value>tableLayoutPanel9</value>
   </data>
-  <data name="&gt;&gt;btnExportarCancelar.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnMostrarExcel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ddlHojasExcel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 78</value>
+  </data>
+  <data name="ddlHojasExcel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 23</value>
+  </data>
+  <data name="ddlHojasExcel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;ddlHojasExcel.Name" xml:space="preserve">
+    <value>ddlHojasExcel</value>
+  </data>
+  <data name="&gt;&gt;ddlHojasExcel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ddlHojasExcel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;ddlHojasExcel.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="btnSubirExcel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1122, 78</value>
+  </data>
+  <data name="btnSubirExcel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 23</value>
+  </data>
+  <data name="btnSubirExcel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="btnSubirExcel.Text" xml:space="preserve">
+    <value>Subir</value>
+  </data>
+  <data name="&gt;&gt;btnSubirExcel.Name" xml:space="preserve">
+    <value>btnSubirExcel</value>
+  </data>
+  <data name="&gt;&gt;btnSubirExcel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSubirExcel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;btnSubirExcel.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="tableLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
@@ -2246,7 +2258,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="tableLayoutPanel9.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="tableLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
     <value>1252, 108</value>
@@ -2267,7 +2279,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel9.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnFiltrarExportarPDF" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="txtFechaExportarPDF" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtFechaHastaExportarPDF" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnExportarExportarPDF" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="btnExportarEditar" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="btnExportarCancelar" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,17,95716,Percent,17,95717,Percent,5,172414,Percent,5,236271,Percent,5,300128,Percent,48,659" /&gt;&lt;Rows Styles="Absolute,110" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="txtRutaExcel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label21" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnImportarExcel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label22" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnMostrarExcel" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="ddlHojasExcel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnSubirExcel" Row="1" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,3,9936101,Percent,18,290735,Percent,18,463364,Percent,5,2399273,Percent,43,849842,Percent,10,463259" /&gt;&lt;Rows Styles="Percent,70,Percent,30" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 5</value>
@@ -2297,7 +2309,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel10.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GrillaExportarPDF" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50" /&gt;&lt;Rows Styles="Percent,23,61809,Percent,76,38191" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="GrillaExcel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tableLayoutPanel9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50" /&gt;&lt;Rows Styles="Percent,23,61809,Percent,76,38191" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="ExportarPDF.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>

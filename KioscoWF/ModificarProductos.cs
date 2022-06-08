@@ -42,9 +42,10 @@ namespace KioscoWF
             txtPrecio.Text = producto.Precio.ToString();
             txtDetalle.Text = producto.Detalle;
             txtCodigo.Text = producto.Codigo;
+            txtStock.Text = producto.Stock.ToString();
             ddlCategoria.SelectedValue = producto.Categoria.IdCategoria;
             ddlEstado.SelectedIndex = producto.IdEstado;
-
+            
             ddlEstado.SelectedValue = producto.IdEstado.ToString();
             ddlCategoria.SelectedValue = producto.Categoria.IdCategoria.ToString();
         }

@@ -9,11 +9,10 @@ namespace Entidades
         private static SqlConnection Conectarse()
         {
             SqlConnectionStringBuilder cadenaConexion = new SqlConnectionStringBuilder();
-            cadenaConexion.DataSource = "DESKTOP-7O48SLC";
+            cadenaConexion.DataSource = "DESKTOP-EGF4AFE\\DB";
             cadenaConexion.InitialCatalog = "Productos";
             cadenaConexion.UserID = "sa";
-            cadenaConexion.Password = "ivo";
-            cadenaConexion.ApplicationName = "Ivo";
+            cadenaConexion.Password = "123";
 
             return new SqlConnection(cadenaConexion.ConnectionString);
         }

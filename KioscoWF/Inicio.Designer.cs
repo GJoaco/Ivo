@@ -253,6 +253,8 @@ namespace KioscoWF
             // 
             resources.ApplyResources(this.txtStockMostrar, "txtStockMostrar");
             this.txtStockMostrar.Name = "txtStockMostrar";
+            this.txtStockMostrar.ReadOnly = true;
+            this.txtStockMostrar.TextChanged += new System.EventHandler(this.txtStockMostrar_TextChanged);
             // 
             // label18
             // 
@@ -632,7 +634,6 @@ namespace KioscoWF
             this.GrillaExportarPDF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GrillaExportarPDF.Name = "GrillaExportarPDF";
             this.GrillaExportarPDF.RowTemplate.Height = 24;
-            this.GrillaExportarPDF.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaExportarPDF_CellValueChanged);
             // 
             // tableLayoutPanel9
             // 
@@ -650,7 +651,6 @@ namespace KioscoWF
             resources.ApplyResources(this.btnFiltrarExportarPDF, "btnFiltrarExportarPDF");
             this.btnFiltrarExportarPDF.Name = "btnFiltrarExportarPDF";
             this.btnFiltrarExportarPDF.UseVisualStyleBackColor = true;
-            this.btnFiltrarExportarPDF.Click += new System.EventHandler(this.btnFiltrarExportarPDF_Click);
             // 
             // txtFechaExportarPDF
             // 
@@ -667,21 +667,18 @@ namespace KioscoWF
             resources.ApplyResources(this.btnExportarExportarPDF, "btnExportarExportarPDF");
             this.btnExportarExportarPDF.Name = "btnExportarExportarPDF";
             this.btnExportarExportarPDF.UseVisualStyleBackColor = true;
-            this.btnExportarExportarPDF.Click += new System.EventHandler(this.btnExportarExportarPDF_Click);
             // 
             // btnExportarEditar
             // 
             resources.ApplyResources(this.btnExportarEditar, "btnExportarEditar");
             this.btnExportarEditar.Name = "btnExportarEditar";
             this.btnExportarEditar.UseVisualStyleBackColor = true;
-            this.btnExportarEditar.Click += new System.EventHandler(this.btnExportarEditar_Click);
             // 
             // btnExportarCancelar
             // 
             resources.ApplyResources(this.btnExportarCancelar, "btnExportarCancelar");
             this.btnExportarCancelar.Name = "btnExportarCancelar";
             this.btnExportarCancelar.UseVisualStyleBackColor = true;
-            this.btnExportarCancelar.Click += new System.EventHandler(this.btnExportarCancelar_Click);
             // 
             // Kiosco
             // 

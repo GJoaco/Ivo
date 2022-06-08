@@ -242,7 +242,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="txtCodigoInicio" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ddlProductoInicio" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lblProductoInicio" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lblCodigoInicio" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,8,765079,Percent,13,944443,Percent,11,12861,Percent,44,81934,Percent,6,555209,Percent,14,787327" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="txtCodigoInicio" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="ddlProductoInicio" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="lblProductoInicio" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lblCodigoInicio" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,8,765079,Percent,13,944443,Percent,11,12861,Percent,12,4203825,Percent,38,853504,Percent,14,787327" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
     <value>5</value>
@@ -254,7 +254,7 @@
     <value>218, 23</value>
   </data>
   <data name="txtCodigoMostrar.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;txtCodigoMostrar.Name" xml:space="preserve">
     <value>txtCodigoMostrar</value>
@@ -308,7 +308,7 @@
     <value>216, 23</value>
   </data>
   <data name="txtProductoMostrar.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;txtProductoMostrar.Name" xml:space="preserve">
     <value>txtProductoMostrar</value>
@@ -362,7 +362,7 @@
     <value>221, 23</value>
   </data>
   <data name="txtPrecioMostrar.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;txtPrecioMostrar.Name" xml:space="preserve">
     <value>txtPrecioMostrar</value>
@@ -416,7 +416,7 @@
     <value>216, 23</value>
   </data>
   <data name="txtStockMostrar.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;txtStockMostrar.Name" xml:space="preserve">
     <value>txtStockMostrar</value>
@@ -590,7 +590,7 @@
     <value>226, 23</value>
   </data>
   <data name="txtProductoProductosListar.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;txtProductoProductosListar.Name" xml:space="preserve">
     <value>txtProductoProductosListar</value>
@@ -641,7 +641,7 @@
     <value>231, 23</value>
   </data>
   <data name="ddlCategoriaProductosListar.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;ddlCategoriaProductosListar.Name" xml:space="preserve">
     <value>ddlCategoriaProductosListar</value>
@@ -692,7 +692,7 @@
     <value>232, 23</value>
   </data>
   <data name="txtCodigoProductosListar.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;txtCodigoProductosListar.Name" xml:space="preserve">
     <value>txtCodigoProductosListar</value>
@@ -716,7 +716,7 @@
     <value>75, 23</value>
   </data>
   <data name="btnBuscarProductosListar.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="btnBuscarProductosListar.Text" xml:space="preserve">
     <value>Buscar</value>
@@ -854,7 +854,7 @@
     <value>375, 29</value>
   </data>
   <data name="btnAgregarProductosAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>8</value>
   </data>
   <data name="btnAgregarProductosAgregar.Text" xml:space="preserve">
     <value>Agregar</value>
@@ -878,7 +878,7 @@
     <value>375, 23</value>
   </data>
   <data name="txtStockProductosAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;txtStockProductosAgregar.Name" xml:space="preserve">
     <value>txtStockProductosAgregar</value>
@@ -932,7 +932,7 @@
     <value>375, 23</value>
   </data>
   <data name="txtCodigoProductosAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;txtCodigoProductosAgregar.Name" xml:space="preserve">
     <value>txtCodigoProductosAgregar</value>
@@ -1019,7 +1019,7 @@
     <value>375, 23</value>
   </data>
   <data name="txtDetalleProductosAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;txtDetalleProductosAgregar.Name" xml:space="preserve">
     <value>txtDetalleProductosAgregar</value>
@@ -1190,7 +1190,7 @@
     <value>375, 23</value>
   </data>
   <data name="ddlCategoriaProductosAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;ddlCategoriaProductosAgregar.Name" xml:space="preserve">
     <value>ddlCategoriaProductosAgregar</value>
@@ -1211,7 +1211,7 @@
     <value>375, 23</value>
   </data>
   <data name="ddlEstadoProductosAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;ddlEstadoProductosAgregar.Name" xml:space="preserve">
     <value>ddlEstadoProductosAgregar</value>
@@ -1412,7 +1412,7 @@
     <value>3, 0</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
+    <value>78, 23</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1433,13 +1433,13 @@
     <value>0</value>
   </data>
   <data name="txtCategoriaCategoriasListar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 3</value>
+    <value>87, 3</value>
   </data>
   <data name="txtCategoriaCategoriasListar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 23</value>
+    <value>167, 23</value>
   </data>
   <data name="txtCategoriaCategoriasListar.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;txtCategoriaCategoriasListar.Name" xml:space="preserve">
     <value>txtCategoriaCategoriasListar</value>
@@ -1457,13 +1457,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnBuscarCategoriasListar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 3</value>
+    <value>260, 3</value>
   </data>
   <data name="btnBuscarCategoriasListar.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="btnBuscarCategoriasListar.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="btnBuscarCategoriasListar.Text" xml:space="preserve">
     <value>Buscar</value>
@@ -1508,7 +1508,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label17" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtCategoriaCategoriasListar" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBuscarCategoriasListar" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,32,59668,Percent,67,40331,Absolute,969" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label17" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtCategoriaCategoriasListar" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBuscarCategoriasListar" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,32,59668,Percent,67,40331,Absolute,977" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GrillaCategorias.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1712,7 +1712,7 @@
     <value>375, 23</value>
   </data>
   <data name="btnAgregarCategoriasAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>4</value>
   </data>
   <data name="btnAgregarCategoriasAgregar.Text" xml:space="preserve">
     <value>Agregar</value>
@@ -1736,7 +1736,7 @@
     <value>375, 23</value>
   </data>
   <data name="ddlEstadoCategoriasAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;ddlEstadoCategoriasAgregar.Name" xml:space="preserve">
     <value>ddlEstadoCategoriasAgregar</value>
@@ -1790,7 +1790,7 @@
     <value>375, 23</value>
   </data>
   <data name="txtDetalleCategoriasAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;txtDetalleCategoriasAgregar.Name" xml:space="preserve">
     <value>txtDetalleCategoriasAgregar</value>

@@ -23,11 +23,6 @@ namespace KioscoWF
         private DataTable categorias;
         private DataTable categoriasGrilla;
         private DataTable estados;
-        private DataTable ventas;
-        private List<Ventas> ventasViejas;
-        private List<Ventas> ventasModificadas;
-        private DateTime fechaExportarFiltro;
-        private DateTime fechaHastaExportarFiltro;
         private Productos productoSeleccionado;
 
         public AutoCompleteSource AutoCompleteSource { get; set; }
@@ -37,7 +32,7 @@ namespace KioscoWF
         public Kiosco()
         {
             InitializeComponent();
-            //IniciarControles();
+            IniciarControles();
         }
 
 
@@ -46,8 +41,6 @@ namespace KioscoWF
         private void IniciarControles()
         {
             conexion = new Conexion();
-            ventas = new DataTable();
-            ventasModificadas = new List<Ventas>();
 
             IniciarControlesCategorias();
             IniciarControlesProductos();
@@ -61,11 +54,6 @@ namespace KioscoWF
             ddlEstadoProductosAgregar.DataSource = estados;
             ddlEstadoProductosAgregar.DisplayMember = "Estado";
             ddlEstadoProductosAgregar.ValueMember = "IdEstado";
-
-            ventas.Columns.Add("Nombre");
-            ventas.Columns.Add("Cantidad");
-            ventas.Columns.Add("Precio");
-            ventas.Columns.Add("Precio Total");
         }
         public void IniciarControlesProductos()
         {
@@ -147,8 +135,9 @@ namespace KioscoWF
                     if (!ddlProductoInicio.Focused)
                     {
                         Int32.TryParse(txtStockMostrar.Text, out int stock);
-                        txtStockMostrar.Text = (stock + 1).ToString();
-                        //ModificarStock(stock);
+                        stock++;
+                        txtStockMostrar.Text = (stock).ToString();
+                        ModificarStock(stock);
                     }
                 }
                 else if(e.KeyValue == (char)Keys.Down)
@@ -156,8 +145,9 @@ namespace KioscoWF
                     if (!ddlProductoInicio.Focused)
                     {
                         Int32.TryParse(txtStockMostrar.Text, out int stock);
-                        txtStockMostrar.Text = (stock - 1).ToString();
-                        //ModificarStock(stock);
+                        stock--;
+                        txtStockMostrar.Text = (stock).ToString();
+                        ModificarStock(stock);
                     }
                 }
             }
@@ -190,6 +180,7 @@ namespace KioscoWF
                     p.Categoria.IdCategoria = Convert.ToInt32(row["IdCategoria"]);
                     p.Detalle = row["Detalle"].ToString();
                     p.IdEstado = Convert.ToInt32(row["IdEstado"]);
+                    p.Stock = Convert.ToInt32(row["Stock"]);
 
                     foreach (DataRow row2 in categorias.Rows)
                     {
@@ -221,6 +212,7 @@ namespace KioscoWF
 
             VaciarTextBox();
             productoSeleccionado = p;
+            txtStockMostrar.ReadOnly = false;
         }
         private void VaciarTextBox()
         {
@@ -229,8 +221,11 @@ namespace KioscoWF
         }
         private void txtStockMostrar_TextChanged(object sender, EventArgs e)
         {
-            Int32.TryParse(txtStockMostrar.Text, out int stock);
-            ModificarStock(stock);
+            if (txtStockMostrar.Focused == true)
+            {
+                Int32.TryParse(txtStockMostrar.Text, out int stock);
+                ModificarStock(stock);
+            }
         }
         private void ModificarStock(int stock)
         {
@@ -309,7 +304,7 @@ namespace KioscoWF
                 int estado = Convert.ToInt32(ddlEstadoProductosAgregar.SelectedValue);
                 string detalle = txtDetalleProductosAgregar.Text;
                 string codigo = txtCodigoProductosAgregar.Text;
-                Int32.TryParse(txtStockProductosAgregar.Text, out int stock);
+                bool stockFlag = Int32.TryParse(txtStockProductosAgregar.Text, out int stock);
 
                 if (txtPrecioProductosAgregar.Text.Contains("."))
                 {
@@ -320,7 +315,7 @@ namespace KioscoWF
                     precio = Convert.ToDecimal(txtPrecioProductosAgregar.Text);
                 }
 
-                if (producto != string.Empty && estado > 0 && precio > 0 && categoria > 0)
+                if (producto != string.Empty && estado > 0 && precio > 0 && categoria > 0 && stockFlag && stock >= 0)
                 {
                     foreach (DataRow row in productos.Rows)
                     {
@@ -485,337 +480,6 @@ namespace KioscoWF
             }
         }
 
-
-
-        //PAGINA EXPORTAR
-        private void btnFiltrarExportarPDF_Click(object sender, EventArgs e)
-        {
-            ventas.Rows.Clear();
-            fechaExportarFiltro = txtFechaExportarPDF.Value;
-            fechaHastaExportarFiltro = txtFechaHastaExportarPDF.Value;
-
-            string pFecha1;
-            string pFechaHasta1;
-
-            if (fechaExportarFiltro.ToString() == string.Empty)
-            {
-                MessageBox.Show("Es obligatorio ingresar una fecha.");
-                return;
-            }
-            else
-            {
-                for (int i = 1; i < categoriasGrilla.Rows.Count; i++)
-                {
-                    DataRow row = categoriasGrilla.Rows[i];
-
-                    string pFecha = GenerarParametros("Fecha", fechaExportarFiltro.ToShortDateString(), "date");
-                    string pFechaHasta = GenerarParametros("FechaHasta", fechaHastaExportarFiltro.ToShortDateString(), "date");
-                    string pIdCategoria = GenerarParametros("IdCategoria", row["IdCategoria"].ToString(), "int");
-
-                    string sql = "EXEC VentasSeleccionar " + pFecha + ", " + pFechaHasta + ", " + pIdCategoria;
-                    DataTable dt = conexion.ObtenerDataTable(sql);
-
-                    int x = 0;
-
-                    for (int j = x; j < dt.Rows.Count; j++)
-                    {
-                        DataRow row2 = dt.Rows[j];
-                        if (row2[2].ToString() == string.Empty)
-                        {
-                            ventas.Rows.Add(row2[0], "Cantidad", "Precio", "Precio Total");
-                        }
-                        else
-                        {
-                            ventas.Rows.Add(row2[0], row2[2], row2[1], row2[3]);
-                        }
-                    }
-                }
-                DataRow row1 = categoriasGrilla.Rows[0];
-
-                pFecha1 = GenerarParametros("Fecha", fechaExportarFiltro.ToShortDateString(), "date");
-                pFechaHasta1 = GenerarParametros("FechaHasta", fechaHastaExportarFiltro.ToShortDateString(), "date");
-                string pIdCategoria1 = GenerarParametros("IdCategoria", row1["IdCategoria"].ToString(), "int");
-
-                string sql1 = "EXEC VentasSeleccionar " + pFecha1 + ", " + pFechaHasta1 + ", " + pIdCategoria1;
-                DataTable dt1 = conexion.ObtenerDataTable(sql1);
-
-                foreach (DataRow row2 in dt1.Rows)
-                {
-                    if (row2[2].ToString() == string.Empty)
-                    {
-                        ventas.Rows.Add(row2[0], "Cantidad", "Precio", "Precio Total");
-                    }
-                    else
-                    {
-                        ventas.Rows.Add(row2[0], row2[2], row2[1], row2[3]);
-
-                    }
-                }
-            }
-
-            DataTable totalVentas = conexion.ObtenerDataTable("EXEC VentasSeleccionarTotal " + pFecha1 + ", " + pFechaHasta1);
-
-            ventas.Rows.Add("", "", "Total", totalVentas.Rows[0][0]);
-
-
-            GrillaExportarPDF.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            GrillaExportarPDF.DataSource = ventas;
-            GrillaExportarPDF.ReadOnly = true;
-
-            for (int i = 0; i < GrillaExportarPDF.Rows.Count - 1; i++)
-            {
-                DataGridViewRow gvRow = GrillaExportarPDF.Rows[i];
-
-                foreach (DataGridViewCell cell in gvRow.Cells)
-                {
-                    if (cell.ColumnIndex > 0)
-                    {
-                        try
-                        {
-                            if (cell.ColumnIndex > 1)
-                            {
-                                Convert.ToDecimal(cell.Value.ToString().Substring(1));
-                            }
-                            else
-                            {
-                                Convert.ToInt32(cell.Value);
-                            }
-                            cell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                        }
-                        catch
-                        {
-
-                        }
-                    }
-                }
-            }
-
-        }
-        private void btnExportarExportarPDF_Click(object sender, EventArgs e)
-        {
-            if (ventas.Rows.Count > 0)
-            {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "PDF (*.pdf)|*.pdf";
-                sfd.FileName = "Ventas - " + fechaExportarFiltro.ToString("dd'-'MM'-'yyyy") + ".pdf";
-                bool fileError = false;
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    if (File.Exists(sfd.FileName))
-                    {
-                        try
-                        {
-                            File.Delete(sfd.FileName);
-                        }
-                        catch (IOException ex)
-                        {
-                            fileError = true;
-                            MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
-                        }
-                    }
-                    if (!fileError)
-                    {
-                        try
-                        {
-                            PdfPTable pdfTable = new PdfPTable(GrillaExportarPDF.Columns.Count);
-                            pdfTable.DefaultCell.Padding = 3;
-                            pdfTable.WidthPercentage = 100;
-                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-
-                            foreach (DataGridViewColumn column in GrillaExportarPDF.Columns)
-                            {
-                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                                cell.BorderWidth = 1.5F;
-                                pdfTable.AddCell(cell);
-                            }
-
-                            for(int i = 0; i < GrillaExportarPDF.Rows.Count -1; i++)
-                            {
-                                if (i == GrillaExportarPDF.Rows.Count - 2)
-                                {
-                                    DataGridViewRow gvRowFinal = GrillaExportarPDF.Rows[i];
-                                    DataRow dRowFinal = ventas.Rows[i];
-
-
-                                    for (int j = 0; j < gvRowFinal.Cells.Count; j++)
-                                    {
-                                        DataGridViewCell cell = gvRowFinal.Cells[j];
-                                        
-                                        PdfPCell cellRow = new PdfPCell(new Phrase(cell.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA_BOLD)));
-                                        cellRow.BorderWidth = 1.5F;
-
-                                        if (j == gvRowFinal.Cells.Count -1)
-                                        {
-                                            cellRow.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
-                                        }
-                                        pdfTable.AddCell(cellRow);
-                                    }
-
-                                    continue;
-                                }
-
-                                bool negrita = false;
-                                DataGridViewRow gvRow = GrillaExportarPDF.Rows[i];
-                                DataRow dRow = ventas.Rows[i];
-
-                                try
-                                {
-                                    Convert.ToInt32(dRow[1].ToString());                                    
-                                }
-                                catch
-                                { 
-                                    negrita = true;
-                                }
-
-                                foreach (DataGridViewCell cell in gvRow.Cells)
-                                {
-                                    if(negrita)
-                                    {
-                                        PdfPCell cellRow = new PdfPCell(new Phrase(cell.Value.ToString(), FontFactory.GetFont(FontFactory.HELVETICA_BOLD)));
-                                        cellRow.BorderWidth = 1.5F;
-                                        pdfTable.AddCell(cellRow);
-                                    }
-                                    else
-                                    {
-                                        PdfPCell cellRow = new PdfPCell(new Phrase(cell.Value.ToString()));
-                                        if(cell.ColumnIndex > 0)
-                                        {
-                                            cellRow.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
-                                        }                      
-                                        pdfTable.AddCell(cellRow);
-                                    }
-                                }
-                            }
-
-                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
-                            {
-                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
-                                PdfWriter.GetInstance(pdfDoc, stream);
-                                pdfDoc.Open();
-                                pdfDoc.Add(pdfTable);
-                                pdfDoc.Close();
-                                stream.Close();
-                            }
-
-                            MessageBox.Show("Descarga realizada.", "Info");
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error :" + ex.Message);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("No se pudo exportar.");
-            }
-        }
-        private void btnExportarEditar_Click(object sender, EventArgs e)
-        {
-            if(btnExportarEditar.Text == "Editar")
-            {
-                if(txtFechaExportarPDF.Text != txtFechaHastaExportarPDF.Text)
-                {
-                    MessageBox.Show("Las fechas deben coincidir.");
-                    return;
-                }
-
-                btnFiltrarExportarPDF_Click(null, EventArgs.Empty);
-                GrillaExportarPDF.Enabled = true;
-                GrillaExportarPDF.ReadOnly = false;
-                txtFechaExportarPDF.Enabled = false;
-                txtFechaHastaExportarPDF.Enabled = false;
-                btnExportarExportarPDF.Enabled = false;
-                btnFiltrarExportarPDF.Enabled = false;
-                btnExportarEditar.Text = "Aceptar";
-                btnExportarCancelar.Visible = true;
-
-                ventasViejas = new List<Ventas>();
-
-                for (int i = 1; i < ventas.Rows.Count; i++)
-                {
-                    try
-                    {
-                        DataRow row = ventas.Rows[i];
-                        Ventas v = new Ventas();
-
-                        v.IdVenta = i;
-                        v.Cantidad = Convert.ToInt32(row["Cantidad"].ToString());
-
-                        ventasViejas.Add(v);
-                    }
-                    catch
-                    {
-                    }
-                }
-            }
-            else
-            {
-                GrillaExportarPDF.Enabled = false;
-                GrillaExportarPDF.ReadOnly = true;
-                txtFechaExportarPDF.Enabled = true;
-                txtFechaHastaExportarPDF.Enabled = true;
-                btnExportarExportarPDF.Enabled = true;
-                btnFiltrarExportarPDF.Enabled = true;
-                btnExportarEditar.Text = "Editar";
-                btnExportarCancelar.Visible = false;
-
-                fechaExportarFiltro = txtFechaExportarPDF.Value;
-
-                foreach(Ventas venta in ventasModificadas)
-                {
-                    string pIdProducto = GenerarParametros("IdProducto", venta.IdProducto.ToString(), "int");
-                    string pFecha = GenerarParametros("Fecha", fechaExportarFiltro.ToShortDateString(), "date");
-                    string pCantidad = GenerarParametros("Cantidad", venta.Cantidad.ToString(), "int");
-                    string sql = "EXEC VentasModificar " + pIdProducto + ", " + pFecha + ", " + pCantidad;
-                    conexion.EjecutarQuery(sql);
-                }
-
-                ventasModificadas.Clear();
-                btnFiltrarExportarPDF_Click(null, EventArgs.Empty);
-            }
-
-        }
-        private void btnExportarCancelar_Click(object sender, EventArgs e)
-        {
-            GrillaExportarPDF.Enabled = false;
-            GrillaExportarPDF.ReadOnly = true;
-            txtFechaExportarPDF.Enabled = true;
-            txtFechaHastaExportarPDF.Enabled = true;
-            btnExportarExportarPDF.Enabled = true;
-            btnFiltrarExportarPDF.Enabled = true;
-            btnExportarEditar.Text = "Editar";
-            btnExportarCancelar.Visible = false;
-
-            ventasModificadas.Clear();
-            btnFiltrarExportarPDF_Click(null, EventArgs.Empty);
-        }
-        private void GrillaExportarPDF_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            Productos p = ObtenerProducto("Producto", ventas.Rows[e.RowIndex]["Nombre"].ToString());
-            try
-            {
-                if (!ventasModificadas.Exists(x => x.IdProducto == p.IdProducto))
-                {
-                    Ventas venta = new Ventas();
-                    venta.IdProducto = p.IdProducto;
-                    venta.Cantidad = Convert.ToInt32(ventas.Rows[e.RowIndex]["Cantidad"].ToString());
-
-                    ventasModificadas.Add(venta);
-                }
-                else
-                {
-                    ventasModificadas.Find(x => x.IdProducto == p.IdProducto).Cantidad = Convert.ToInt32(ventas.Rows[e.RowIndex]["Cantidad"].ToString());
-                }
-            }
-            catch
-            {
-                MessageBox.Show("La cantidad debe ser un numero.");
-                GrillaExportarPDF.Rows[e.RowIndex].Cells["Cantidad"].Value = ventasViejas.Find(x => x.IdVenta == e.RowIndex).Cantidad;
-            }
-        }
-
         
 
         //FUNCIONES GENERALES
@@ -867,12 +531,6 @@ namespace KioscoWF
         {
             ddlEstadoProductosAgregar.SelectedValue = 1;
             ddlEstadoCategoriasAgregar.SelectedValue = 1;
-
-            int cantidadRows = ventas.Rows.Count;
-            for (int i = 1; i <= cantidadRows; i++)
-            {
-                ventas.Rows.Remove(ventas.Rows[0]);
-            }
         }
     }
 }

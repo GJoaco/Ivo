@@ -125,7 +125,7 @@ namespace KioscoWF
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(437, 23);
-            this.txtCodigo.TabIndex = 21;
+            this.txtCodigo.TabIndex = 6;
             // 
             // txtDetalle
             // 
@@ -133,7 +133,7 @@ namespace KioscoWF
             this.txtDetalle.Margin = new System.Windows.Forms.Padding(4);
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(437, 23);
-            this.txtDetalle.TabIndex = 20;
+            this.txtDetalle.TabIndex = 5;
             // 
             // txtPrecio
             // 
@@ -141,7 +141,7 @@ namespace KioscoWF
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(437, 23);
-            this.txtPrecio.TabIndex = 19;
+            this.txtPrecio.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -149,7 +149,7 @@ namespace KioscoWF
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(437, 23);
-            this.txtNombre.TabIndex = 18;
+            this.txtNombre.TabIndex = 1;
             // 
             // label13
             // 
@@ -170,7 +170,7 @@ namespace KioscoWF
             this.btnModificar.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(437, 26);
-            this.btnModificar.TabIndex = 30;
+            this.btnModificar.TabIndex = 8;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -183,7 +183,7 @@ namespace KioscoWF
             this.ddlEstado.Margin = new System.Windows.Forms.Padding(4);
             this.ddlEstado.Name = "ddlEstado";
             this.ddlEstado.Size = new System.Drawing.Size(437, 23);
-            this.ddlEstado.TabIndex = 32;
+            this.ddlEstado.TabIndex = 4;
             // 
             // ddlCategoria
             // 
@@ -193,7 +193,7 @@ namespace KioscoWF
             this.ddlCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.ddlCategoria.Name = "ddlCategoria";
             this.ddlCategoria.Size = new System.Drawing.Size(437, 23);
-            this.ddlCategoria.TabIndex = 31;
+            this.ddlCategoria.TabIndex = 3;
             // 
             // label1
             // 
@@ -213,13 +213,13 @@ namespace KioscoWF
             this.txtStock.Margin = new System.Windows.Forms.Padding(4);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(437, 23);
-            this.txtStock.TabIndex = 33;
+            this.txtStock.TabIndex = 7;
             // 
             // ModificarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 503);
+            this.ClientSize = new System.Drawing.Size(477, 503);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.ddlEstado);

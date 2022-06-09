@@ -104,15 +104,15 @@ namespace KioscoWF
             this.label14 = new System.Windows.Forms.Label();
             this.ExportarPDF = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.GrillaExcel = new System.Windows.Forms.DataGridView();
+            this.grillaExcel = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.txtRutaExcel = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.btnImportarExcel = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.btnMostrarExcel = new System.Windows.Forms.Button();
-            this.ddlHojasExcel = new System.Windows.Forms.ComboBox();
+            this.btnExplorarExcel = new System.Windows.Forms.Button();
+            this.lblProductosExcel = new System.Windows.Forms.Label();
+            this.ddlProductosExcel = new System.Windows.Forms.ComboBox();
             this.btnSubirExcel = new System.Windows.Forms.Button();
+            this.btnCancelarExcel = new System.Windows.Forms.Button();
             this.Paginas.SuspendLayout();
             this.tbInicio.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -135,7 +135,7 @@ namespace KioscoWF
             this.tableLayoutPanel6.SuspendLayout();
             this.ExportarPDF.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GrillaExcel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaExcel)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -625,64 +625,65 @@ namespace KioscoWF
             // tableLayoutPanel10
             // 
             resources.ApplyResources(this.tableLayoutPanel10, "tableLayoutPanel10");
-            this.tableLayoutPanel10.Controls.Add(this.GrillaExcel, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.grillaExcel, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel9, 0, 0);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             // 
-            // GrillaExcel
+            // grillaExcel
             // 
-            resources.ApplyResources(this.GrillaExcel, "GrillaExcel");
-            this.GrillaExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GrillaExcel.Name = "GrillaExcel";
-            this.GrillaExcel.RowTemplate.Height = 24;
+            this.grillaExcel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grillaExcel.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.grillaExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.grillaExcel, "grillaExcel");
+            this.grillaExcel.Name = "grillaExcel";
+            this.grillaExcel.RowTemplate.Height = 24;
             // 
             // tableLayoutPanel9
             // 
             resources.ApplyResources(this.tableLayoutPanel9, "tableLayoutPanel9");
             this.tableLayoutPanel9.Controls.Add(this.txtRutaExcel, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.label21, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.btnImportarExcel, 2, 0);
-            this.tableLayoutPanel9.Controls.Add(this.label22, 0, 1);
-            this.tableLayoutPanel9.Controls.Add(this.btnMostrarExcel, 2, 1);
-            this.tableLayoutPanel9.Controls.Add(this.ddlHojasExcel, 1, 1);
+            this.tableLayoutPanel9.Controls.Add(this.btnExplorarExcel, 2, 0);
+            this.tableLayoutPanel9.Controls.Add(this.lblProductosExcel, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.ddlProductosExcel, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.btnSubirExcel, 5, 1);
+            this.tableLayoutPanel9.Controls.Add(this.btnCancelarExcel, 4, 1);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             // 
             // txtRutaExcel
             // 
             resources.ApplyResources(this.txtRutaExcel, "txtRutaExcel");
             this.txtRutaExcel.Name = "txtRutaExcel";
+            this.txtRutaExcel.ReadOnly = true;
             // 
             // label21
             // 
             resources.ApplyResources(this.label21, "label21");
             this.label21.Name = "label21";
             // 
-            // btnImportarExcel
+            // btnExplorarExcel
             // 
-            resources.ApplyResources(this.btnImportarExcel, "btnImportarExcel");
-            this.btnImportarExcel.Name = "btnImportarExcel";
-            this.btnImportarExcel.UseVisualStyleBackColor = true;
-            this.btnImportarExcel.Click += new System.EventHandler(this.btnImportarExcel_Click);
+            resources.ApplyResources(this.btnExplorarExcel, "btnExplorarExcel");
+            this.btnExplorarExcel.Name = "btnExplorarExcel";
+            this.btnExplorarExcel.UseVisualStyleBackColor = true;
+            this.btnExplorarExcel.Click += new System.EventHandler(this.btnImportarExcel_Click);
             // 
-            // label22
+            // lblProductosExcel
             // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
+            resources.ApplyResources(this.lblProductosExcel, "lblProductosExcel");
+            this.lblProductosExcel.Name = "lblProductosExcel";
             // 
-            // btnMostrarExcel
+            // ddlProductosExcel
             // 
-            resources.ApplyResources(this.btnMostrarExcel, "btnMostrarExcel");
-            this.btnMostrarExcel.Name = "btnMostrarExcel";
-            this.btnMostrarExcel.UseVisualStyleBackColor = true;
-            this.btnMostrarExcel.Click += new System.EventHandler(this.btnMostrarExcel_Click);
-            // 
-            // ddlHojasExcel
-            // 
-            this.ddlHojasExcel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlHojasExcel.FormattingEnabled = true;
-            resources.ApplyResources(this.ddlHojasExcel, "ddlHojasExcel");
-            this.ddlHojasExcel.Name = "ddlHojasExcel";
+            this.ddlProductosExcel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlProductosExcel.FormattingEnabled = true;
+            this.ddlProductosExcel.Items.AddRange(new object[] {
+            resources.GetString("ddlProductosExcel.Items"),
+            resources.GetString("ddlProductosExcel.Items1"),
+            resources.GetString("ddlProductosExcel.Items2")});
+            resources.ApplyResources(this.ddlProductosExcel, "ddlProductosExcel");
+            this.ddlProductosExcel.Name = "ddlProductosExcel";
+            this.ddlProductosExcel.SelectedIndexChanged += new System.EventHandler(this.ddlProductosExcel_SelectedIndexChanged);
             // 
             // btnSubirExcel
             // 
@@ -690,6 +691,13 @@ namespace KioscoWF
             this.btnSubirExcel.Name = "btnSubirExcel";
             this.btnSubirExcel.UseVisualStyleBackColor = true;
             this.btnSubirExcel.Click += new System.EventHandler(this.btnSubirExcel_Click);
+            // 
+            // btnCancelarExcel
+            // 
+            resources.ApplyResources(this.btnCancelarExcel, "btnCancelarExcel");
+            this.btnCancelarExcel.Name = "btnCancelarExcel";
+            this.btnCancelarExcel.UseVisualStyleBackColor = true;
+            this.btnCancelarExcel.Click += new System.EventHandler(this.btnCancelarExcel_Click);
             // 
             // Kiosco
             // 
@@ -726,7 +734,7 @@ namespace KioscoWF
             this.tableLayoutPanel6.PerformLayout();
             this.ExportarPDF.ResumeLayout(false);
             this.tableLayoutPanel10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GrillaExcel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grillaExcel)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             this.ResumeLayout(false);
@@ -784,7 +792,7 @@ namespace KioscoWF
         public System.Windows.Forms.ComboBox ddlCategoriaProductosListar;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TabPage ExportarPDF;
-        private System.Windows.Forms.DataGridView GrillaExcel;
+        private System.Windows.Forms.DataGridView grillaExcel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
@@ -813,11 +821,11 @@ namespace KioscoWF
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TextBox txtRutaExcel;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button btnImportarExcel;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button btnMostrarExcel;
-        private System.Windows.Forms.ComboBox ddlHojasExcel;
+        private System.Windows.Forms.Button btnExplorarExcel;
+        private System.Windows.Forms.Label lblProductosExcel;
+        private System.Windows.Forms.ComboBox ddlProductosExcel;
         private System.Windows.Forms.Button btnSubirExcel;
+        private System.Windows.Forms.Button btnCancelarExcel;
     }
 }
 

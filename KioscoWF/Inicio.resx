@@ -706,6 +706,30 @@
   <data name="&gt;&gt;txtCodigoProductosListar.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="btnExportarExcelProductos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 66</value>
+  </data>
+  <data name="btnExportarExcelProductos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 23</value>
+  </data>
+  <data name="btnExportarExcelProductos.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnExportarExcelProductos.Text" xml:space="preserve">
+    <value>Exportar Excel</value>
+  </data>
+  <data name="&gt;&gt;btnExportarExcelProductos.Name" xml:space="preserve">
+    <value>btnExportarExcelProductos</value>
+  </data>
+  <data name="&gt;&gt;btnExportarExcelProductos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnExportarExcelProductos.Parent" xml:space="preserve">
+    <value>tableLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;btnExportarExcelProductos.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="btnBuscarProductosListar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -731,7 +755,7 @@
     <value>tableLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;btnBuscarProductosListar.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
@@ -761,7 +785,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtProductoProductosListar" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="ddlCategoriaProductosListar" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="txtCodigoProductosListar" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="btnBuscarProductosListar" Row="1" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,9,98004,Percent,23,35329,Percent,10,67416,Percent,22,55217,Percent,9,98004,Percent,23,35329" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label3" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtProductoProductosListar" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="ddlCategoriaProductosListar" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="label1" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="txtCodigoProductosListar" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="btnExportarExcelProductos" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnBuscarProductosListar" Row="1" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,9,98004,Percent,23,35329,Percent,10,67416,Percent,22,55217,Percent,9,98004,Percent,23,35329" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GrillaProductos.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1412,7 +1436,7 @@
     <value>3, 0</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 23</value>
+    <value>71, 23</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1433,10 +1457,10 @@
     <value>0</value>
   </data>
   <data name="txtCategoriaCategoriasListar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 3</value>
+    <value>80, 3</value>
   </data>
   <data name="txtCategoriaCategoriasListar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 23</value>
+    <value>155, 23</value>
   </data>
   <data name="txtCategoriaCategoriasListar.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1457,7 +1481,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBuscarCategoriasListar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 3</value>
+    <value>241, 3</value>
   </data>
   <data name="btnBuscarCategoriasListar.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1508,7 +1532,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label17" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtCategoriaCategoriasListar" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBuscarCategoriasListar" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,32,59668,Percent,67,40331,Absolute,994" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="label17" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="txtCategoriaCategoriasListar" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnBuscarCategoriasListar" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,32,59668,Percent,67,40331,Absolute,996" /&gt;&lt;Rows Styles="Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="GrillaCategorias.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -2263,6 +2287,30 @@
   <data name="&gt;&gt;btnCancelarExcel.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="btnPlantillaExcel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1123, 3</value>
+  </data>
+  <data name="btnPlantillaExcel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 23</value>
+  </data>
+  <data name="btnPlantillaExcel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnPlantillaExcel.Text" xml:space="preserve">
+    <value>Descargar Plantilla</value>
+  </data>
+  <data name="&gt;&gt;btnPlantillaExcel.Name" xml:space="preserve">
+    <value>btnPlantillaExcel</value>
+  </data>
+  <data name="&gt;&gt;btnPlantillaExcel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPlantillaExcel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;btnPlantillaExcel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="tableLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
   </data>
@@ -2291,7 +2339,7 @@
     <value>1</value>
   </data>
   <data name="tableLayoutPanel9.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="txtRutaExcel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label21" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnExplorarExcel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lblProductosExcel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ddlProductosExcel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnSubirExcel" Row="1" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="btnCancelarExcel" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,6,389776,Percent,15,57508,Percent,18,463364,Percent,38,658146,Percent,10,383387,Percent,10,463259" /&gt;&lt;Rows Styles="Percent,70,Percent,30" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="txtRutaExcel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label21" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="btnExplorarExcel" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="lblProductosExcel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ddlProductosExcel" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnSubirExcel" Row="1" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="btnCancelarExcel" Row="1" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="btnPlantillaExcel" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,6,389776,Percent,15,57508,Percent,18,463364,Percent,38,658146,Percent,10,383387,Percent,10,463259" /&gt;&lt;Rows Styles="Percent,70,Percent,30" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 5</value>

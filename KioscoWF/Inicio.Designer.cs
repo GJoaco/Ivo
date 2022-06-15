@@ -59,6 +59,7 @@ namespace KioscoWF
             this.ddlCategoriaProductosListar = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigoProductosListar = new System.Windows.Forms.TextBox();
+            this.btnExportarExcelProductos = new System.Windows.Forms.Button();
             this.btnBuscarProductosListar = new System.Windows.Forms.Button();
             this.GrillaProductos = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -113,6 +114,7 @@ namespace KioscoWF
             this.ddlProductosExcel = new System.Windows.Forms.ComboBox();
             this.btnSubirExcel = new System.Windows.Forms.Button();
             this.btnCancelarExcel = new System.Windows.Forms.Button();
+            this.btnPlantillaExcel = new System.Windows.Forms.Button();
             this.Paginas.SuspendLayout();
             this.tbInicio.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -302,6 +304,7 @@ namespace KioscoWF
             this.tableLayoutPanel3.Controls.Add(this.ddlCategoriaProductosListar, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.txtCodigoProductosListar, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnExportarExcelProductos, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.btnBuscarProductosListar, 5, 1);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             // 
@@ -336,6 +339,13 @@ namespace KioscoWF
             // 
             resources.ApplyResources(this.txtCodigoProductosListar, "txtCodigoProductosListar");
             this.txtCodigoProductosListar.Name = "txtCodigoProductosListar";
+            // 
+            // btnExportarExcelProductos
+            // 
+            resources.ApplyResources(this.btnExportarExcelProductos, "btnExportarExcelProductos");
+            this.btnExportarExcelProductos.Name = "btnExportarExcelProductos";
+            this.btnExportarExcelProductos.UseVisualStyleBackColor = true;
+            this.btnExportarExcelProductos.Click += new System.EventHandler(this.btnExportarExcelProductos_Click);
             // 
             // btnBuscarProductosListar
             // 
@@ -648,6 +658,7 @@ namespace KioscoWF
             this.tableLayoutPanel9.Controls.Add(this.ddlProductosExcel, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.btnSubirExcel, 5, 1);
             this.tableLayoutPanel9.Controls.Add(this.btnCancelarExcel, 4, 1);
+            this.tableLayoutPanel9.Controls.Add(this.btnPlantillaExcel, 5, 0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             // 
             // txtRutaExcel
@@ -698,6 +709,13 @@ namespace KioscoWF
             this.btnCancelarExcel.Name = "btnCancelarExcel";
             this.btnCancelarExcel.UseVisualStyleBackColor = true;
             this.btnCancelarExcel.Click += new System.EventHandler(this.btnCancelarExcel_Click);
+            // 
+            // btnPlantillaExcel
+            // 
+            resources.ApplyResources(this.btnPlantillaExcel, "btnPlantillaExcel");
+            this.btnPlantillaExcel.Name = "btnPlantillaExcel";
+            this.btnPlantillaExcel.UseVisualStyleBackColor = true;
+            this.btnPlantillaExcel.Click += new System.EventHandler(this.btnPlantillaExcel_Click);
             // 
             // Kiosco
             // 
@@ -826,6 +844,8 @@ namespace KioscoWF
         private System.Windows.Forms.ComboBox ddlProductosExcel;
         private System.Windows.Forms.Button btnSubirExcel;
         private System.Windows.Forms.Button btnCancelarExcel;
+        private System.Windows.Forms.Button btnExportarExcelProductos;
+        private System.Windows.Forms.Button btnPlantillaExcel;
     }
 }
 

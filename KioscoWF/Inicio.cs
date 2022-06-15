@@ -1,7 +1,5 @@
 ﻿using Entidades;
 using ExcelDataReader;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -110,7 +108,7 @@ namespace KioscoWF
             productosRechazados = new DataTable();
 
             productosAgregados.Columns.Add("IdProducto");
-            productosAgregados.Columns.Add("Nombre");
+            productosAgregados.Columns.Add("Producto");
             productosAgregados.Columns.Add("Precio");
             productosAgregados.Columns.Add("IdCategoria");
             productosAgregados.Columns.Add("Detalle");
@@ -118,7 +116,7 @@ namespace KioscoWF
             productosAgregados.Columns.Add("Stock");
 
             productosActualizados.Columns.Add("IdProducto");
-            productosActualizados.Columns.Add("Nombre");
+            productosActualizados.Columns.Add("Producto");
             productosActualizados.Columns.Add("Precio");
             productosActualizados.Columns.Add("IdCategoria");
             productosActualizados.Columns.Add("Detalle");
@@ -126,7 +124,7 @@ namespace KioscoWF
             productosActualizados.Columns.Add("Stock");
 
             productosRechazados.Columns.Add("IdProducto");
-            productosRechazados.Columns.Add("Nombre");
+            productosRechazados.Columns.Add("Producto");
             productosRechazados.Columns.Add("Precio");
             productosRechazados.Columns.Add("IdCategoria");
             productosRechazados.Columns.Add("Detalle");
@@ -289,6 +287,7 @@ namespace KioscoWF
 
             productosGrilla.Columns.Add("Modificar");
             productosGrilla.Columns.Add("Baja");
+
             foreach (DataRow row in productosGrilla.Rows)
             {
                 row["Modificar"] = "Modificar";
@@ -297,6 +296,7 @@ namespace KioscoWF
 
             GrillaProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GrillaProductos.DataSource = productosGrilla;
+            GrillaProductos.Columns["IdCategoria"].Visible = false;
         }
         private void AccionGrillaProductos(object sender, DataGridViewCellEventArgs e)
         {
@@ -422,7 +422,52 @@ namespace KioscoWF
                 MessageBox.Show("Error, verifique que los valores ingresados.");
             }
         }
-        
+        private void btnExportarExcelProductos_Click(object sender, EventArgs e)
+        {
+            if (productos.Rows.Count > 0)
+            {
+                DataTable excel = new DataTable();
+                excel.Columns.Add("IdProducto");
+                excel.Columns.Add("Producto");
+                excel.Columns.Add("Precio");
+                excel.Columns.Add("IdCategoria");
+                excel.Columns.Add("Detalle");
+                excel.Columns.Add("Codigo");
+                excel.Columns.Add("Stock");
+
+                foreach(DataRow row in productosGrilla.Rows)
+                {
+                    excel.Rows.Add(row["IdProducto"], row["Producto"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
+                }
+
+                var lines = new List<string>();
+
+                string[] columnNames = excel.Columns
+                    .Cast<DataColumn>()
+                    .Select(column => column.ColumnName)
+                    .ToArray();
+
+                var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
+                lines.Add(header);
+
+                var valueLines = excel.AsEnumerable()
+                    .Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
+
+                lines.AddRange(valueLines);
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.FileName = "Productos";
+                saveFileDialog.Filter = "Excel Worbook|*.xlsx";
+                saveFileDialog.Title = "Guardar Excel";
+
+                saveFileDialog.ShowDialog();
+
+                if (saveFileDialog.FileName != "")
+                {
+                    File.WriteAllLines(saveFileDialog.FileName, lines);
+                }
+            }
+        }
 
 
         //PAGINA CATEGORIAS
@@ -548,7 +593,7 @@ namespace KioscoWF
                 DataColumnCollection columns = excel.Tables[0].Columns;
 
                 if (columns[0].ColumnName != "IdProducto"
-                    || columns[1].ColumnName != "Nombre"
+                    || columns[1].ColumnName != "Producto"
                     || columns[2].ColumnName != "Precio"
                     || columns[3].ColumnName != "IdCategoria"
                     || columns[4].ColumnName != "Detalle"
@@ -599,6 +644,44 @@ namespace KioscoWF
                     break;
             }
         }
+        private void btnPlantillaExcel_Click(object sender, EventArgs e)
+        {
+            DataTable excel = new DataTable();
+            excel.Columns.Add("IdProducto");
+            excel.Columns.Add("Producto");
+            excel.Columns.Add("Precio");
+            excel.Columns.Add("IdCategoria");
+            excel.Columns.Add("Detalle");
+            excel.Columns.Add("Codigo");
+            excel.Columns.Add("Stock");
+
+            var lines = new List<string>();
+
+            string[] columnNames = excel.Columns
+                .Cast<DataColumn>()
+                .Select(column => column.ColumnName)
+                .ToArray();
+
+            var header = string.Join(",", columnNames.Select(name => $"\"{name}\""));
+            lines.Add(header);
+
+            var valueLines = excel.AsEnumerable()
+                .Select(row => string.Join(",", row.ItemArray.Select(val => $"\"{val}\"")));
+
+            lines.AddRange(valueLines);
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.FileName = "Productos";
+            saveFileDialog.Filter = "Excel Worbook|*.xlsx";
+            saveFileDialog.Title = "Guardar Excel";
+
+            saveFileDialog.ShowDialog();
+
+            if (saveFileDialog.FileName != "")
+            {
+                File.WriteAllLines(saveFileDialog.FileName, lines);
+            }
+        }
         private void CargarExcel()
         {
             DataTable data = (DataTable)(grillaExcel.DataSource);
@@ -615,7 +698,7 @@ namespace KioscoWF
                 existeProducto = false;
                 producto = new Productos();
 
-                producto.Producto = row["Nombre"].ToString();
+                producto.Producto = row["Producto"].ToString();
                 producto.Detalle = row["Detalle"].ToString();
                 producto.Codigo = row["Codigo"].ToString();
 
@@ -650,26 +733,26 @@ namespace KioscoWF
 
                         if (existeCodigo)
                         {
-                            productosRechazados.Rows.Add(row["IdProducto"], row["Nombre"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
+                            productosRechazados.Rows.Add(row["IdProducto"], row["Producto"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
                         }
                         else if (existeProducto)
                         {
                             row["IdProducto"] = producto.IdProducto;
-                            productosActualizados.Rows.Add(row["IdProducto"], row["Nombre"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
+                            productosActualizados.Rows.Add(row["IdProducto"], row["Producto"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
                         }
                         else
                         {
-                            productosAgregados.Rows.Add(row["IdProducto"], row["Nombre"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
+                            productosAgregados.Rows.Add(row["IdProducto"], row["Producto"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
                         }
                     }
                     else
                     {
-                        productosRechazados.Rows.Add(row["IdProducto"], row["Nombre"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
+                        productosRechazados.Rows.Add(row["IdProducto"], row["Producto"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
                     }
                 }
                 catch
                 {
-                    productosRechazados.Rows.Add(row["IdProducto"], row["Nombre"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
+                    productosRechazados.Rows.Add(row["IdProducto"], row["Producto"], row["Precio"], row["IdCategoria"], row["Detalle"], row["Codigo"], row["Stock"]);
                 }
             }
 
@@ -687,7 +770,7 @@ namespace KioscoWF
             {
                 foreach (DataRow row in productosAgregados.Rows)
                 {
-                    string pProducto = GenerarParametros("Producto", row["Nombre"].ToString(), "string");
+                    string pProducto = GenerarParametros("Producto", row["Producto"].ToString(), "string");
                     string pPrecio = GenerarParametros("Precio", row["Precio"].ToString(), "decimal");
                     string pCategoria = GenerarParametros("IdCategoria", row["IdCategoria"].ToString(), "int");
                     string pEstado = GenerarParametros("IdEstado", 1.ToString(), "int");
@@ -704,7 +787,7 @@ namespace KioscoWF
                 foreach (DataRow row in productosActualizados.Rows)
                 {
                     string pIdProducto = GenerarParametros("IdProducto", row["IdProducto"].ToString(), "int");
-                    string pProducto = GenerarParametros("Producto", row["Nombre"].ToString(), "string");
+                    string pProducto = GenerarParametros("Producto", row["Producto"].ToString(), "string");
                     string pPrecio = GenerarParametros("Precio", row["Precio"].ToString(), "decimal");
                     string pCategoria = GenerarParametros("IdCategoria", row["IdCategoria"].ToString(), "int");
                     string pEstado = GenerarParametros("IdEstado", 1.ToString(), "int");

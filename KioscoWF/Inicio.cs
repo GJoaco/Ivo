@@ -567,51 +567,58 @@ namespace KioscoWF
         //PAGINA EXCEL
         private void btnImportarExcel_Click(object sender, EventArgs e)
         {
-            OpenFileDialog oOpenFileDialog = new OpenFileDialog();
-            oOpenFileDialog.Filter = "Excel Worbook|*.xlsx";
-
-            if (oOpenFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                grillaExcel.DataSource = null;
+                OpenFileDialog oOpenFileDialog = new OpenFileDialog();
+                oOpenFileDialog.Filter = "Excel Worbook|*.xlsx";
 
-                txtRutaExcel.Text = oOpenFileDialog.FileName;
-
-                FileStream fsSource = new FileStream(oOpenFileDialog.FileName, FileMode.Open, FileAccess.Read);
-
-                IExcelDataReader reader = ExcelReaderFactory.CreateReader(fsSource);
-
-                excel = reader.AsDataSet(new ExcelDataSetConfiguration()
+                if (oOpenFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    ConfigureDataTable = (tableReader) => new ExcelDataTableConfiguration()
+                    grillaExcel.DataSource = null;
+
+                    txtRutaExcel.Text = oOpenFileDialog.FileName;
+
+                    FileStream fsSource = new FileStream(oOpenFileDialog.FileName, FileMode.Open, FileAccess.Read);
+
+                    IExcelDataReader reader = ExcelReaderFactory.CreateReader(fsSource);
+
+                    excel = reader.AsDataSet(new ExcelDataSetConfiguration()
                     {
-                        UseHeaderRow = true
+                        ConfigureDataTable = (tableReader) => new ExcelDataTableConfiguration()
+                        {
+                            UseHeaderRow = true
+                        }
+                    });
+
+                    reader.Close();
+
+                    DataColumnCollection columns = excel.Tables[0].Columns;
+
+                    if (columns[0].ColumnName != "IdProducto"
+                        || columns[1].ColumnName != "Producto"
+                        || columns[2].ColumnName != "Precio"
+                        || columns[3].ColumnName != "IdCategoria"
+                        || columns[4].ColumnName != "Detalle"
+                        || columns[5].ColumnName != "Codigo"
+                        || columns[6].ColumnName != "Stock"
+                        )
+                    {
+                        MessageBox.Show("Error. Las columnas no coinciden con el formato adecuado.");
+                        CancelarExcel();
+                        return;
                     }
-                });
 
-                reader.Close();
-
-                DataColumnCollection columns = excel.Tables[0].Columns;
-
-                if (columns[0].ColumnName != "IdProducto"
-                    || columns[1].ColumnName != "Producto"
-                    || columns[2].ColumnName != "Precio"
-                    || columns[3].ColumnName != "IdCategoria"
-                    || columns[4].ColumnName != "Detalle"
-                    || columns[5].ColumnName != "Codigo"
-                    || columns[6].ColumnName != "Stock"
-                    )
-                {
-                    MessageBox.Show("Error. Las columnas no coinciden con el formato adecuado.");
-                    CancelarExcel();
-                    return;
+                    grillaExcel.DataSource = excel.Tables[0];
+                    btnSubirExcel.Enabled = true;
+                    btnSubirExcel.Text = "Cargar";
+                    lblProductosExcel.Visible = false;
+                    btnCancelarExcel.Visible = false;
+                    ddlProductosExcel.Visible = false;
                 }
-
-                grillaExcel.DataSource = excel.Tables[0];
-                btnSubirExcel.Enabled = true;
-                btnSubirExcel.Text = "Cargar";
-                lblProductosExcel.Visible = false;
-                btnCancelarExcel.Visible = false;
-                ddlProductosExcel.Visible = false;
+            }
+            catch
+            {
+                MessageBox.Show("Error. Formato incorrecto");
             }
         }
         private void btnSubirExcel_Click(object sender, EventArgs e)
